@@ -18,7 +18,7 @@
 
             <div class="nav-actions">
                 <a href="${ctx}/login" class="btn-link">Login</a>
-                <a href="${ctx}/login" class="btn btn-primary">Sign In</a>
+                <a href="${ctx}/register" class="btn btn-primary">Sign In</a>
             </div>
         </nav>
 
