@@ -51,8 +51,8 @@
         <div class="divider">OR CONTINUE WITH</div>
 
         <div class="social-row">
-            <button class="social-auth-btn"><i class="g-icon">G</i>Google</button>
-            <button class="social-auth-btn"><i class="fb-icon">f</i>Facebook</button>
+            <button class="social-auth-btn"><i class="g-icon">G</i> Google</button>
+            <button class="social-auth-btn"><i class="fb-icon">f</i> Facebook</button>
         </div>
 
         <div class="divider">──────────────────────────────────────</div>

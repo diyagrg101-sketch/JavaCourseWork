@@ -65,20 +65,9 @@
 
         <button class="btn-full">Create an Account →</button>
 
-        <div class="divider">────────────────────────────────────────────</div>
 
-        <div class="auth-link">Already have an account? <a href="login.html">Log in</a></div>
+        <div class="auth-link">Already have an account? <a href="login.html">Login</a></div>
 
-        <div class="divider">OR SIGN UP WITH</div>
-
-        <div class="social-row">
-            <button class="social-auth-btn">
-                <i class="g-icon">G</i> Google
-            </button>
-            <button class="social-auth-btn">
-                <i class="fb-icon">f</i> Facebook
-            </button>
-        </div>
 
     </div>
 </div>
