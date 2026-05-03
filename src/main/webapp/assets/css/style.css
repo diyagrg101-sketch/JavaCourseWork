@@ -23,6 +23,13 @@
         --white: #ffffff;
         --border: #e5e5e5;
         --text-muted: #777;
+    --color-primary: #c97116;
+    --color-bg-soft: #fcfcfc;
+    --color-card: #ffffff;
+    --color-text-light: #666666;
+    --color-border: #e0e0e0;
+    --radius-lg: 15px;
+    --radius-sm: 8px;
 
         --radius: 12px;
         --radius-sm: 8px;
@@ -1235,22 +1242,14 @@ section { padding: 4.5rem 0; }
 /* ===========================================================
    REGISTER PAGE    =========================================================== */
 
-:root {
-    --color-primary: #c97116;
-    --color-bg-soft: #fcfcfc;
-    --color-card: #ffffff;
-    --color-text-light: #666666;
-    --color-border: #e0e0e0;
-    --radius-lg: 15px;
-    --radius-sm: 8px;
-}
+
 
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'DM Sans', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .auth-page {
