@@ -140,7 +140,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/masala-chai.jpg" alt="Masala Tea"/>
+        <img src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Masala Tea</span>
