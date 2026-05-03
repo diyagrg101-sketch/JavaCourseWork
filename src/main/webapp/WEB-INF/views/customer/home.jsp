@@ -24,7 +24,7 @@
                 delights in the heart of city. Your daily ritual, elevated.
             </p>
             <div class="hero-actions">
-                <a href="#menu" class="btn btn-primary btn-lg">Explore Menu</a>
+                <a href="${ctx}/manageProducts" class="btn btn-primary btn-lg">Explore Menu</a>
                 <a href="${ctx}/login" class="btn btn-outline btn-lg">Sign In</a>
             </div>
         </div>
