@@ -34,7 +34,7 @@
             <nav class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="${ctx}/manageProducts">Menu</a>
-                <a href="#about" class="nav-link">About Us</a>
+                <a href="${ctx}/about" class="nav-link">About Us</a>
                 <a href="#contact" class="nav-link">Contact Us</a>
 
                 <div class="nav-actions">
