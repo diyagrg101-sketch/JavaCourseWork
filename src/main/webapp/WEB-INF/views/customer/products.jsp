@@ -113,8 +113,72 @@
         </div>
     </div>
 
-</div>
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Jam Toast</span>
+                <span class="menu-full-price">NRs 200</span>
+            </div>
+            <p class="menu-full-desc">Simple snack of toasted bread with sweet fruit jam.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
 
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Milk Tea</span>
+                <span class="menu-full-price">NRs 150</span>
+            </div>
+            <p class="menu-full-desc">Refreshing tea with milk.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/masala-chai.jpg" alt="Masala Tea"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Masala Tea</span>
+                <span class="menu-full-price">NRs 180</span>
+            </div>
+            <p class="menu-full-desc">Milk tea with spices like cardamom, ginger, and cloves.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/brownie.jpg" alt="Brownie"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Brownie</span>
+                <span class="menu-full-price">NRs 200</span>
+            </div>
+            <p class="menu-full-desc">Rich, fudgy chocolate dessert.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/matcha.jpg" alt="Matcha Tea"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Matcha Tea</span>
+                <span class="menu-full-price">NRs 290</span>
+            </div>
+            <p class="menu-full-desc">Smooth and earthy Japanese green tea.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+</div>
 
 <!-- ================= FOOTER ================= -->
 
