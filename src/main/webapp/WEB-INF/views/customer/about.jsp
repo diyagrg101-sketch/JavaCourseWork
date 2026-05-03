@@ -6,41 +6,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>About Us - Sip and Serve</title>
-
-    <link rel="stylesheet" href="${ctx}/assets/css/style.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-</head>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<header class="navbar" id="navbar">
-    <div class="container nav-container">
-
-        <a href="${ctx}/home" class="brand">
-            <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-            <span class="brand-name">Sip and Serve</span>
-        </a>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="${ctx}/home" class="nav-link">Home</a>
-            <a href="${ctx}/manageProducts" class="nav-link">Menu</a>
-            <a href="${ctx}/about" class="nav-link active">About Us</a>
-            <a href="${ctx}/home#contact" class="nav-link">Contact Us</a>
-
-            <div class="nav-actions">
-                <a href="${ctx}/login" class="btn-link">Login</a>
-                <a href="${ctx}/login" class="btn btn-primary">Sign In</a>
-            </div>
-        </nav>
-
-    </div>
-</header>
+<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
 <!-- ================= ABOUT HERO ================= -->
 <section class="about-hero">
@@ -142,51 +113,7 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="footer">
-
-    <div class="container footer-grid">
-
-        <div class="footer-col">
-            <a href="${ctx}/home" class="brand">
-                <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-                <span class="brand-name">Sip and Serve</span>
-            </a>
-
-            <p class="footer-text">Crafting coffee and memories since 2030.</p>
-
-            <p class="footer-copy">© 2026 Sip and Serve. All rights reserved.</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-title">Quick Links</h4>
-            <ul class="footer-links">
-                <li><a href="${ctx}/home">Home</a></li>
-                <li><a href="${ctx}/manageProducts">Menu</a></li>
-                <li><a href="${ctx}/about">About Us</a></li>
-                <li><a href="${ctx}/home#contact">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-title">Contact</h4>
-            <ul class="footer-links">
-                <li><i class="fa-solid fa-phone"></i> +977 9841 123 4567</li>
-                <li><i class="fa-solid fa-envelope"></i> sipandserve@gmail.com</li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-title">Follow Us</h4>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-        </div>
-
-    </div>
-
-</footer>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 </html>

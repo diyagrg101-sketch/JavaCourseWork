@@ -6,43 +6,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Products - Sip and Serve</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="${ctx}/assets/css/style.css">
-
-    <!-- FONT AWESOME (IMPORTANT for icons) -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-</head>
-
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<header class="navbar" id="navbar">
-    <div class="container nav-container">
-
-        <a href="${ctx}/home" class="brand">
-            <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-            <span class="brand-name">Sip and Serve</span>
-        </a>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="${ctx}/home" class="nav-link">Home</a>
-            <a href="${ctx}/manageProducts" class="nav-link active">Menu</a>
-            <a href="${ctx}/home#about" class="nav-link">About Us</a>
-            <a href="${ctx}/home#contact" class="nav-link">Contact Us</a>
-
-            <div class="nav-actions">
-                <a href="${ctx}/login" class="btn-link">Login</a>
-                <a href="${ctx}/login" class="btn btn-primary">Sign In</a>
-            </div>
-        </nav>
-
-    </div>
-</header>
+<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
 
 <!-- ================= PAGE HEADER ================= -->
@@ -197,7 +165,7 @@
 
     </div>
 
-</footer>
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 </html>

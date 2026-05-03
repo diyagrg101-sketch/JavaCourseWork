@@ -4,46 +4,11 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sip and Serve - Crafting the perfect cup and serving warm memories. Premium coffee and freshly baked delights in Pokhara." />
-    <title>Sip and Serve | Bakery & Cafe</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="${ctx}/assets/css/style.css" />
-</head>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 
     <!-- =================== NAVBAR =================== -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#home" class="brand">
-                <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-                <span class="brand-name">Sip and Serve</span>
-            </a>
-
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <nav class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="${ctx}/manageProducts">Menu</a>
-                <a href="${ctx}/about" class="nav-link">About Us</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
-
-                <div class="nav-actions">
-                    <a href="${ctx}/login" class="btn-link">Login</a>
-                    <a href="${ctx}/login" class="btn btn-primary">Sign In</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
     <!-- =================== HERO =================== -->
     <section class="hero" id="home">
@@ -173,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary">Read our Story</a>
+                <a href="${ctx}/about" class="btn btn-primary">Read our Story</a>
             </div>
         </div>
     </section>
@@ -200,48 +165,8 @@
     </section>
 
     <!-- =================== FOOTER =================== -->
-    <footer class="footer" id="contact">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="#home" class="brand">
-                    <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-                    <span class="brand-name">Sip and Serve</span>
-                </a>
-                <p class="footer-text">
-                    Crafting the perfect cup and serving warm memories since 2030.
-                    Experience the finest cafe culture in town.
-                </p>
-                <p class="footer-copy">2026 Sahaja Bistro. All rights reserved.</p>
-            </div>
 
-            <div class="footer-col">
-                <h4 class="footer-title">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title">Contact Us</h4>
-                <ul class="footer-links">
-                    <li><i class="fa-solid fa-phone"></i> +977 9841 123 4567</li>
-                    <li><i class="fa-solid fa-envelope"></i> sipandserve@gmail.com</li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title">Follow Us</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
     <script src="${ctx}/assets/js/main.js"></script>
 </body>

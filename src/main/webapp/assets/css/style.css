@@ -918,3 +918,230 @@ section { padding: 4.5rem 0; }
     font-size: 0.9rem;
     font-weight: 600;
 }
+
+/* ===========================================================
+                         CONTACT PAGE
+   =========================================================== */
+
+/* ---------- HERO ---------- */
+.contact-hero {
+    padding: 48px 80px 20px;
+    text-align: center;
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.contact-hero h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.contact-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 40px 80px 60px;
+    align-items: start;
+}
+
+/* ---------- HEADINGS ---------- */
+.contact-form-section h2,
+.contact-info-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+/* ---------- FORM CARD ---------- */
+.contact-form-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    background: var(--color-card);
+}
+
+.contact-form-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.contact-form-card p {
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+    margin-bottom: 24px;
+}
+
+/* ---------- FORM FIELDS ---------- */
+.contact-form-card .form-row {
+    margin-bottom: 14px;
+}
+
+.contact-form-card .form-group {
+    margin-bottom: 14px;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: inherit;
+    outline: none;
+    transition: border var(--transition);
+}
+
+.contact-form-card textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+    border-color: var(--color-primary);
+}
+
+/* ---------- INFO SECTION ---------- */
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.info-row-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    color: var(--color-primary);
+}
+
+.info-row-text strong {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.info-row-text p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+.info-row-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ---------- HOURS CARD ---------- */
+.hours-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    background: var(--color-card);
+}
+
+.hours-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.85rem;
+}
+
+.hours-row:last-of-type {
+    border-bottom: none;
+}
+
+.hours-row .day {
+    font-weight: 600;
+}
+
+.hours-note {
+    font-size: 0.78rem;
+    color: var(--color-primary);
+    margin-top: 10px;
+}
+
+/* ---------- SHARING SECTION ---------- */
+.sharing-section {
+    background: var(--color-primary-light);
+    padding: 48px 80px;
+    text-align: center;
+    border-radius: var(--radius-md);
+    margin: 0 80px 60px;
+}
+
+.sharing-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.sharing-section p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 28px;
+}
+
+.sharing-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sharing-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.sharing-icon-circle {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border: 2px solid var(--color-primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.sharing-icon-item span {
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+}
