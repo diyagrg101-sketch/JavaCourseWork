@@ -8,10 +8,13 @@
         </a>
 
         <nav class="nav-links" id="navLinks">
-            <a href="${ctx}/home" class="nav-link">Home</a>
-            <a href="${ctx}/manageProducts" class="nav-link">Menu</a>
-            <a href="${ctx}/about" class="nav-link">About Us</a>
-            <a href="${ctx}/contact" class="nav-link active">Contact Us</a>
+            <a href="${ctx}/home" class="nav-link ${uri.contains('/home') ? 'active' : ''}">Home</a>
+
+            <a href="${ctx}/manageProducts" class="nav-link ${uri.contains('/manageProducts') ? 'active' : ''}">Menu</a>
+
+            <a href="${ctx}/about" class="nav-link ${uri.contains('/about') ? 'active' : ''}">About Us</a>
+
+            <a href="${ctx}/contact" class="nav-link ${uri.contains('/contact') ? 'active' : ''}">Contact Us</a>
 
             <div class="nav-actions">
                 <a href="${ctx}/login" class="btn-link">Login</a>

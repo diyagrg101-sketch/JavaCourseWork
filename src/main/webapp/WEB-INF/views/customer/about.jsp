@@ -27,7 +27,7 @@
 
         <div class="about-hero-btns">
             <a href="${ctx}/manageProducts" class="btn-primary">Explore Menu</a>
-            <a href="${ctx}/home#contact" class="btn-ghost">Get in Touch</a>
+            <a href="${ctx}/contact" class="btn-ghost">Get in Touch</a>
         </div>
     </div>
 </section>

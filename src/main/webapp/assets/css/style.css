@@ -166,6 +166,11 @@ button { font-family: inherit; cursor: pointer; }
     display: flex;
     align-items: center;
     gap: 1.75rem;
+    position: relative;
+    font-weight: 500;
+    color: var(--color-text);
+    padding: 0.4rem 0.1rem;
+    transition: color 0.25s ease;
 }
 .nav-link {
     position: relative;
@@ -180,10 +185,12 @@ button { font-family: inherit; cursor: pointer; }
     left: 0; bottom: -4px;
     height: 2px; width: 0;
     background: var(--color-primary);
-    transition: width var(--transition);
+    transition: width 0.25s ease;
 }
-.nav-link:hover, .nav-link.active { color: var(--color-primary); }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link:hover,
+.nav-link.active { color: var(--color-primary); font-weight: 600; }
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
 
 .nav-actions {
     display: flex;
