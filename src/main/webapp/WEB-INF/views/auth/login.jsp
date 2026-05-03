@@ -25,8 +25,8 @@
         <p class="auth-subtitle">The aroma of fresh coffee is waiting for you.</p>
 
         <div class="login-tabs">
-            <button type="button" class="login-tab active" onclick="setTab(this)">Customer</button>
-            <button type="button" class="login-tab" onclick="setTab(this)">Admin</button>
+            <button type="button" class="login-tab active" onclick="setTab(this)">👤 Member</button>
+            <button type="button" class="login-tab" onclick="setTab(this)">🛡️ Admin Portal</button>
         </div>
 
         <!-- LOGIN FORM  -->
@@ -51,15 +51,15 @@
         <div class="divider">OR CONTINUE WITH</div>
 
         <div class="social-row">
-            <button class="social-auth-btn">Google</button>
-            <button class="social-auth-btn">Facebook</button>
+            <button class="social-auth-btn"><i class="g-icon">G</i>Google</button>
+            <button class="social-auth-btn"><i class="fb-icon">f</i>Facebook</button>
         </div>
 
         <div class="divider">──────────────────────────────────────</div>
 
         <div class="auth-link">
             Don't have an account yet?
-            <a href="signup.jsp">Create an account</a>
+            <a href="${pageContext.request.contextPath}/register">Create an account</a>
         </div>
 
         <div class="footer-auth-links">
