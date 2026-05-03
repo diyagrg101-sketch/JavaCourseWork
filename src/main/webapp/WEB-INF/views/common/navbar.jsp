@@ -17,6 +17,11 @@
             <a href="${ctx}/contact" class="nav-link ${uri.contains('/contact') ? 'active' : ''}">Contact Us</a>
 
             <div class="nav-actions">
+                <a href="${ctx}/cart" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+
                 <a href="${ctx}/login" class="btn-link">Login</a>
                 <a href="${ctx}/register" class="btn btn-primary">Sign In</a>
             </div>
