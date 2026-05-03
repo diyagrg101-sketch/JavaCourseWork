@@ -23,18 +23,46 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String role = request.getParameter("role"); // 👈 IMPORTANT (from JSP)
 
-        // DEBUG (optional)
         System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
+        System.out.println("Role: " + role);
 
+        HttpSession session = request.getSession();
+
+        // =========================
         // TEMP LOGIN LOGIC
-        if ("admin@gmail.com".equals(email) && "1234".equals(password)) {
-            response.sendRedirect(request.getContextPath() + "/home");
+        // =========================
+
+        if ("admin".equals(role)) {
+
+            if ("admin@gmail.com".equals(email) && "1234".equals(password)) {
+                session.setAttribute("user", email);
+                session.setAttribute("role", "admin");
+
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+            } else {
+                request.setAttribute("error", "Invalid admin credentials");
+                forwardToLogin(request, response);
+            }
+
         } else {
-            request.setAttribute("error", "Invalid credentials");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
-            rd.forward(request, response);
+
+            if ("user@gmail.com".equals(email) && "1234".equals(password)) {
+                session.setAttribute("user", email);
+                session.setAttribute("role", "member");
+
+                response.sendRedirect(request.getContextPath() + "/home");
+            } else {
+                request.setAttribute("error", "Invalid member credentials");
+                forwardToLogin(request, response);
+            }
         }
+    }
+
+    private void forwardToLogin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
+        rd.forward(request, response);
     }
 }
