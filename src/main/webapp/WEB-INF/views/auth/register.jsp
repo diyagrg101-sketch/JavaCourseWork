@@ -66,7 +66,7 @@
         <button class="btn-full">Create an Account →</button>
 
 
-        <div class="auth-link">Already have an account? <a href="login.html">Login</a></div>
+        <div class="auth-link">Already have an account? <a href="${pageContext.request.contextPath}/login">Login</a></div>
 
 
     </div>
