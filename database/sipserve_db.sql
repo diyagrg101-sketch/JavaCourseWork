@@ -39,7 +39,7 @@ INSERT INTO products (name, description, price, rating, image_url, category_id, 
     ('Latte',                    'Smooth coffee made with espresso and steamed milk.',                                          350.00, 4.9, 'latte.jpg',          1, 1),
     ('Brownie',                  'Rich fudgy chocolate brownie with a crackly top.',                                            180.00, 4.5, 'brownie.jpg',        2, 0),
     ('Matcha Latte',             'Earthy Japanese matcha whisked with steamed milk.',                                           320.00, 4.7, 'matcha.jpg',         1, 0),
-    ('Milk Tea',                 'Creamy Nepali-style milk tea, gently spiced.',                                                120.00, 4.3, 'milktea.jpg',        4, 0),
+    ('Milk Tea',                 'Creamy Nepali-style milk tea, gently spiced.',                                                120.00, 4.3, 'Milktea.jpg',        4, 0),
     ('Jam Toast',                'Crisp toast served with house-made fruit jam.',                                               150.00, 4.2, 'jam-toast.jpg',      3, 0);
 
 

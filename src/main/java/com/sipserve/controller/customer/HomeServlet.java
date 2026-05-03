@@ -23,17 +23,19 @@ public class HomeServlet extends HttpServlet {
             throws ServletException, IOException {
 
         List<Product> signatures;
+
         try {
             signatures = productDAO.findSignatures();
         } catch (RuntimeException ex) {
             getServletContext().log("Failed to load signature products", ex);
             signatures = Collections.emptyList();
             req.setAttribute("dbError",
-                "Unable to load menu right now. Please try again shortly.");
+                    "Unable to load menu right now. Please try again shortly.");
         }
 
         req.setAttribute("signatureProducts", signatures);
+
         req.getRequestDispatcher("/WEB-INF/views/customer/home.jsp")
-           .forward(req, resp);
+                .forward(req, resp);
     }
 }
