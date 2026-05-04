@@ -16,29 +16,23 @@
     --color-card: #ffffff;
     --color-dark: #1c1c1c;
 
-    --orange: #ff7a00;
+        --orange: #ff7a00;
         --orange-light: #ff914d;
         --orange-bg: #fff3e6;
 
         --white: #ffffff;
         --border: #e5e5e5;
         --text-muted: #777;
-    --color-primary: #c97116;
-    --color-bg-soft: #fcfcfc;
-    --color-card: #ffffff;
-    --color-text-light: #666666;
-    --color-border: #e0e0e0;
-    --radius-lg: 15px;
-    --radius-sm: 8px;
 
-        --radius: 12px;
         --radius-sm: 8px;
+        --radius: 12px;
+
 
     --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.08);
 
-    --radius-sm: 8px;
+
     --radius-md: 14px;
     --radius-lg: 22px;
 
