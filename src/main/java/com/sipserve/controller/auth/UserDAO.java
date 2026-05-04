@@ -1,4 +1,4 @@
-package com.sipserve.dao;
+package com.sipserve.controller.auth;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -24,13 +24,20 @@
         <h2 style="margin-top:8px;">Welcome back!</h2>
         <p class="auth-subtitle">The aroma of fresh coffee is waiting for you.</p>
 
+        <!-- ERROR MESSAGE -->
+        <% if (request.getAttribute("error") != null) { %>
+        <div style="color:red; margin:10px 0; font-weight:500;">
+            <%= request.getAttribute("error") %>
+        </div>
+        <% } %>
+
         <div class="login-tabs">
             <button type="button" class="login-tab active" onclick="setTab(this)">👤 Member</button>
             <button type="button" class="login-tab" onclick="setTab(this)">🛡️ Admin Portal</button>
         </div>
 
-        <!-- LOGIN FORM  -->
-        <form action="login" method="post">
+        <!-- LOGIN FORM -->
+        <form action="${pageContext.request.contextPath}/login" method="post">
 
             <div class="form-group">
                 <label>Email or Phone Number</label>

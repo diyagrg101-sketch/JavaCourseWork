@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import jakarta.servlet.RequestDispatcher;
 
+import com.sipserve.dao.UserDAO;
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
@@ -23,46 +25,27 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String role = request.getParameter("role"); // 👈 IMPORTANT (from JSP)
 
-        System.out.println("Email: " + email);
-        System.out.println("Role: " + role);
+        UserDAO dao = new UserDAO();
 
-        HttpSession session = request.getSession();
+        String role = dao.validateLogin(email, password);
 
-        // =========================
-        // TEMP LOGIN LOGIC
-        // =========================
+        if (role != null) {
 
-        if ("admin".equals(role)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", email);
+            session.setAttribute("role", role);
 
-            if ("admin@gmail.com".equals(email) && "1234".equals(password)) {
-                session.setAttribute("user", email);
-                session.setAttribute("role", "admin");
-
+            if ("ADMIN".equalsIgnoreCase(role)) {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard");
             } else {
-                request.setAttribute("error", "Invalid admin credentials");
-                forwardToLogin(request, response);
+                response.sendRedirect(request.getContextPath() + "/home");
             }
 
         } else {
-
-            if ("user@gmail.com".equals(email) && "1234".equals(password)) {
-                session.setAttribute("user", email);
-                session.setAttribute("role", "member");
-
-                response.sendRedirect(request.getContextPath() + "/home");
-            } else {
-                request.setAttribute("error", "Invalid member credentials");
-                forwardToLogin(request, response);
-            }
+            request.setAttribute("error", "Invalid email or password");
+            request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                    .forward(request, response);
         }
-    }
-
-    private void forwardToLogin(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
-        rd.forward(request, response);
     }
 }
