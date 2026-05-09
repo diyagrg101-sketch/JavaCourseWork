@@ -5,11 +5,13 @@
     <div class="container nav-container">
 
         <a href="${ctx}/home" class="brand">
-            <span class="brand-logo">
-                <i class="fa-solid fa-mug-saucer"></i>
-            </span>
-            <span class="brand-name">Sip and Serve</span>
+
+            <img src="${ctx}/assets/images/logo.png" alt="logo"/>
+
+            <span class="brand-name">Sip & Serve</span>
+
         </a>
+
 
         <nav class="nav-links" id="navLinks">
 

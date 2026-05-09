@@ -5,8 +5,10 @@
 
         <div class="footer-col">
             <a href="${ctx}/home" class="brand">
-                <span class="brand-logo"><i class="fa-solid fa-mug-saucer"></i></span>
-                <span class="brand-name">Sip and Serve</span>
+
+                <img src="${ctx}/assets/images/logo.png" alt="logo"/>
+                <span class="brand-name">Sip & Serve</span>
+
             </a>
 
             <p class="footer-text">Crafting coffee and memories since 2030.</p>

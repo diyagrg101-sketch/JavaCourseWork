@@ -128,8 +128,8 @@ button { font-family: inherit; cursor: pointer; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
     gap: 1rem;
 }
 .brand {
@@ -139,15 +139,11 @@ button { font-family: inherit; cursor: pointer; }
     font-weight: 700;
     color: var(--color-text);
 }
-.brand-logo {
-    width: 38px; height: 38px;
+.brand-logo-img{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
     border-radius: 50%;
-    background: var(--color-primary);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
 }
 .brand-name {
     font-family: var(--font-display);
@@ -576,6 +572,13 @@ section { padding: 4.5rem 0; }
 }
 .footer-links a:hover { color: var(--color-primary); }
 
+.brand-logo-img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .social-links {
     display: flex;
     gap: 0.6rem;
@@ -596,6 +599,7 @@ section { padding: 4.5rem 0; }
     color: #fff;
     transform: translateY(-2px);
 }
+
 /* ===== MENU PAGE ===== */
 .page-header {
     background: var(--orange-bg);

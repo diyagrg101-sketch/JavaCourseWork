@@ -46,7 +46,7 @@
     <div class="dashboard-main">
         <div class="greet-row">
             <div>
-                <div class="greet-h">Namaste, Arjun K.! 👋</div>
+                <div class="greet-h">Namaste !!</div>
                 <div class="greet-sub">What are you craving today?</div>
             </div>
             <div class="popular-chip">📈 Popular in Kathmandu right now: <strong>Masala Tea</strong></div>
@@ -55,42 +55,38 @@
         <!-- REORDER -->
         <div class="section-head">
             <div class="section-title">🔄 Reorder Your Favorites</div>
-            <a href="menu.html" class="see-all">See All ›</a>
+            <a href="${ctx}/manageProducts" class="see-all">See All ›</a>
         </div>
         <div class="reorder-grid" style="margin-bottom:28px">
             <div class="reorder-card">
-                <img class="reorder-img" src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=200&q=80" alt="Vanilla Latte"/>
+                <img src="${ctx}/assets/images/vanilla latte.jpg" alt="Vanilla latte"/>
                 <div class="reorder-body">
                     <div class="reorder-name">Vanilla Latte</div>
-                    <div class="reorder-date">Yesterday, 4:30 PM</div>
                     <div class="reorder-price">NPR 350</div>
                     <button class="btn-reorder">Order Again</button>
                 </div>
             </div>
             <div class="reorder-card">
-                <img class="reorder-img" src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200&q=80" alt="Chicken Sandwich"/>
+                <img src="${ctx}/assets/images/Chicken Sandwich.jpg" alt="Chicken Sandwich"/>
                 <div class="reorder-body">
                     <div class="reorder-name">Chicken Sandwich</div>
-                    <div class="reorder-date">24 Oct 2023</div>
                     <div class="reorder-price">NPR 580</div>
                     <button class="btn-reorder">Order Again</button>
                 </div>
             </div>
             <div class="reorder-card">
-                <img class="reorder-img" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&q=80" alt="Iced Americano"/>
+                <img src="${ctx}/assets/images/IcedAmericano.jpg" alt="Iced Americano"/>
                 <div class="reorder-body">
                     <div class="reorder-name">Iced Americano</div>
-                    <div class="reorder-date">22 Oct 2023</div>
                     <div class="reorder-price">NPR 280</div>
                     <button class="btn-reorder">Order Again</button>
                 </div>
             </div>
             <div class="reorder-card">
-                <img class="reorder-img" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=200&q=80" alt="Cheese Croissant"/>
+                <img src="${ctx}/assets/images/crossiant.jpg" alt="Croissant"/>
                 <div class="reorder-body">
-                    <div class="reorder-name">Cheese Croissant</div>
-                    <div class="reorder-date">20 Oct 2023</div>
-                    <div class="reorder-price">NPR 420</div>
+                    <div class="reorder-name">Croissant</div>
+                    <div class="reorder-price">NPR 200</div>
                     <button class="btn-reorder">Order Again</button>
                 </div>
             </div>
