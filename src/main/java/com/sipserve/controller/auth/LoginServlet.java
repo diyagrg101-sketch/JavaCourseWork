@@ -1,6 +1,7 @@
 package com.sipserve.controller.auth;
 
 import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -15,7 +16,9 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
+        RequestDispatcher rd =
+                request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
+
         rd.forward(request, response);
     }
 
@@ -33,19 +36,36 @@ public class LoginServlet extends HttpServlet {
         if (role != null) {
 
             HttpSession session = request.getSession();
+
             session.setAttribute("user", email);
             session.setAttribute("role", role);
 
+            // ADMIN LOGIN
             if ("ADMIN".equalsIgnoreCase(role)) {
-                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
-            } else {
-                response.sendRedirect(request.getContextPath() + "/home");
+
+                response.sendRedirect(
+                        request.getContextPath() + "/admin/dashboard"
+                );
+
+            }
+            // CUSTOMER LOGIN
+            else {
+
+                response.sendRedirect(
+                        request.getContextPath() + "/dashboard"
+                );
             }
 
         } else {
-            request.setAttribute("error", "Invalid email or password");
-            request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
-                    .forward(request, response);
+
+            request.setAttribute(
+                    "error",
+                    "Invalid email or password"
+            );
+
+            request.getRequestDispatcher(
+                    "/WEB-INF/views/auth/login.jsp"
+            ).forward(request, response);
         }
     }
 }
