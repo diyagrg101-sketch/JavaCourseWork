@@ -178,6 +178,44 @@
         </div>
     </div>
 
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Paneer Tikka Wrap</span>
+                <span class="menu-full-price">NRs 300</span>
+            </div>
+            <p class="menu-full-desc">Paneer Tikka Wrap is a smoky, spiced paneer roll.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Hazelnut Cappuccuino</span>
+                <span class="menu-full-price">NRs 450</span>
+            </div>
+            <p class="menu-full-desc">Rich espresso blended with silky steamed milk and a hint of premium hazelnut syrup.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img src="${ctx}/assets/images/cheesecake.jpg" alt="cheesecake"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Cheesecake</span>
+                <span class="menu-full-price">NRs 250</span>
+            </div>
+            <p class="menu-full-desc">Cheesecake is a creamy, tangy dessert layered on a buttery biscuit crust.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
 </div>
 
 <!-- ================= FOOTER ================= -->

@@ -49,7 +49,7 @@
                 <div class="greet-h">Namaste !!</div>
                 <div class="greet-sub">What are you craving today?</div>
             </div>
-            <div class="popular-chip">📈 Popular in Kathmandu right now: <strong>Masala Tea</strong></div>
+            <div class="popular-chip">📈 Popular right now: <strong>Masala Tea</strong></div>
         </div>
 
         <!-- REORDER -->
@@ -98,12 +98,11 @@
                 <div class="section-title">⭐ Recommended for You</div>
                 <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">Based on your recent cravings and popular picks.</div>
             </div>
-            <a href="menu.html" class="btn btn-outline" style="font-size:.8rem;padding:7px 14px">View Full Menu</a>
         </div>
         <div class="rec-grid" style="margin-bottom:24px">
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img class="rec-img" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80" alt="Hazelnut Cappuccino"/>
+                    <img src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut Cappuccino"/>
                     <div class="rec-rating">⭐ 4.8</div>
                 </div>
                 <div class="rec-body">
@@ -114,23 +113,22 @@
             </div>
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img class="rec-img" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&q=80" alt="Himalayan Pink Salt Tea"/>
+                    <img src="${ctx}/assets/images/cheesecake.jpg" alt="CheeseCake"/>
                     <div class="rec-rating">⭐ 4.9</div>
                 </div>
                 <div class="rec-body">
-                    <div class="rec-name-row"><span class="rec-name">Himalayan Pink Salt Tea</span><span class="rec-price">NPR 320</span></div>
-                    <p class="rec-desc">Authentic milk tea sourced from the hills of Ilam, infused with a touch of Himalayan pink salt.</p>
+                    <div class="rec-name-row"><span class="rec-name">Cheese Cake</span><span class="rec-price">NPR 250</span></div>
+                    <p class="rec-desc">Cheesecake is a creamy, tangy dessert layered on a buttery biscuit crust.</p>
                     <button class="btn btn-primary btn-full">Add to Cart</button>
                 </div>
             </div>
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img class="rec-img" src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&q=80" alt="Paneer Tikka Wrap"/>
-                    <div class="rec-rating">⭐ 4.7</div>
+                    <img src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
                 </div>
                 <div class="rec-body">
-                    <div class="rec-name-row"><span class="rec-name">Paneer Tikka Wrap</span><span class="rec-price">NPR 650</span></div>
-                    <p class="rec-desc">Grilled cottage cheese cubes marinated in spices, wrapped with fresh veggies and mint chutney.</p>
+                    <div class="rec-name-row"><span class="rec-name">Paneer Tikka Wrap</span><span class="rec-price">NPR 300</span></div>
+                    <p class="rec-desc">Paneer Tikka Wrap is a smoky, spiced paneer roll.</p>
                     <button class="btn btn-primary btn-full">Add to Cart</button>
                 </div>
             </div>
