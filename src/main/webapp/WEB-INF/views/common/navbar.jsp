@@ -53,13 +53,9 @@
 
                     <a href="${ctx}/dashboard" class="user-profile-nav">
 
-                        <img src="${ctx}/resources/images/default-user.png"
-                             alt="User"
-                             class="user-nav-img">
-
-                        <span class="user-nav-name">
-                                ${sessionScope.user}
-                        </span>
+                        <div class="profile-circle">
+                                ${sessionScope.user.substring(0,1).toUpperCase()}
+                        </div>
 
                     </a>
 

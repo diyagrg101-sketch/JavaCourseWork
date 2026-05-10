@@ -61,4 +61,30 @@ public class UserDAO {
 
         return role;
     }
+    // =========================
+    // GET USER NAME BY EMAIL
+    // =========================
+    public String getUserNameByEmail(String email) {
+
+        String fullname = null;
+
+        String sql = "SELECT full_name FROM users WHERE email=?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                fullname = rs.getString("full_name");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return fullname;
+    }
 }

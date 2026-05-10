@@ -37,7 +37,11 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            session.setAttribute("user", email);
+            String fullname = dao.getUserNameByEmail(email);
+
+            // STORE IN SESSION
+            session.setAttribute("user", fullname);
+            session.setAttribute("email", email);
             session.setAttribute("role", role);
 
             // ADMIN LOGIN
