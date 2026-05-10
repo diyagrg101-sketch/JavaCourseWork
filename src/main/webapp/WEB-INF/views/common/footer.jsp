@@ -32,10 +32,24 @@
 
         <div class="footer-col">
             <h4 class="footer-title">Follow Us</h4>
+
             <div class="social-links">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
             </div>
         </div>
 

@@ -141,7 +141,7 @@
             <span>NPR 3,198</span>
         </div>
 
-        <a href="${ctx}/checkout" class="btn btn-primary btn-full btn-lg checkout-btn" style="margin-bottom:8px">Proceed to Checkout ›</a>
+        <a href="${ctx}/checkout" class="btn btn-primary btn-full cart-btn-lg cart-checkout-btn" style="margin-bottom:8px">Proceed to Checkout ›</a>
 
         <p style="font-size:.74rem;color:var(--text-muted);text-align:center">By proceeding, you agree to our Terms of Service.</p>
 
