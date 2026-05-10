@@ -5,14 +5,10 @@
 
         <div class="footer-col">
             <a href="${ctx}/home" class="brand">
-
                 <img src="${ctx}/assets/images/logo.png" alt="logo"/>
                 <span class="brand-name">Sip & Serve</span>
-
             </a>
-
             <p class="footer-text">Crafting coffee and memories since 2030.</p>
-
             <p class="footer-copy">© 2026 Sip and Serve. All rights reserved.</p>
         </div>
 

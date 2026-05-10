@@ -5,13 +5,9 @@
     <div class="container nav-container">
 
         <a href="${ctx}/home" class="brand">
-
             <img src="${ctx}/assets/images/logo.png" alt="logo"/>
-
             <span class="brand-name">Sip & Serve</span>
-
         </a>
-
 
         <nav class="nav-links" id="navLinks">
 
