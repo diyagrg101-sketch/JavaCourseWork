@@ -62,7 +62,7 @@
 <div class="menu-full-grid">
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/caramel-frappe.jpg" alt="Caramel Frappe"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/caramel-frappe.jpg" alt="Caramel Frappe"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Caramel Macchiato Frappe</span>
@@ -75,7 +75,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/chocolate-cake.jpg" alt="Chocolate Cake"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/chocolate-cake.jpg" alt="Chocolate Cake"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Chocolate Cake</span>
@@ -88,7 +88,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/sandwich.jpg" alt="Sandwich"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/sandwich.jpg" alt="Sandwich"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Sandwich</span>
@@ -101,7 +101,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/latte.jpg" alt="Latte"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/latte.jpg" alt="Latte"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Latte</span>
@@ -114,7 +114,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Jam Toast</span>
@@ -127,7 +127,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Milk Tea</span>
@@ -140,7 +140,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Masala Tea</span>
@@ -153,7 +153,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/brownie.jpg" alt="Brownie"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/brownie.jpg" alt="Brownie"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Brownie</span>
@@ -166,7 +166,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/matcha.jpg" alt="Matcha Tea"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/matcha.jpg" alt="Matcha Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Matcha Tea</span>
@@ -179,7 +179,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Paneer Tikka Wrap</span>
@@ -192,7 +192,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Hazelnut Cappuccuino</span>
@@ -205,7 +205,7 @@
     </div>
 
     <div class="menu-full-card">
-        <img src="${ctx}/assets/images/cheesecake.jpg" alt="cheesecake"/>
+        <img class="menu-full-card img" src="${ctx}/assets/images/cheesecake.jpg" alt="cheesecake"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Cheesecake</span>
@@ -216,7 +216,49 @@
             <button class="btn-cart">Add to Cart +</button>
         </div>
     </div>
+    <div class="menu-full-card">
+        <img class="menu-full-card img" src="${ctx}/assets/images/blueberryCheesecake.jpg" alt="Blueberry cheesecake"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Blueberry Cheesecake</span>
+                <span class="menu-full-price">NRs 650</span>
+            </div>
+            <p class="menu-full-desc">Rich creamy cheesecake with fresh local blueberry.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img class="menu-full-card img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Hazelnut Cappuccuino</span>
+                <span class="menu-full-price">NRs 450</span>
+            </div>
+            <p class="menu-full-desc">House special with organic milk and cinnamon powder.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+    <div class="menu-full-card">
+        <img class="menu-full-card img" src="${ctx}/assets/images/avocadoTaost.jpg" alt="Avocado Toast"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Avocado Toast</span>
+                <span class="menu-full-price">NRs 400</span>
+            </div>
+            <p class="menu-full-desc">Sourdough bread, mashed avocado, poached egg, and chili flakes.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <button class="btn-cart">Add to Cart +</button>
+        </div>
+    </div>
+
+
 </div>
+
+
 
 <!-- ================= FOOTER ================= -->
 

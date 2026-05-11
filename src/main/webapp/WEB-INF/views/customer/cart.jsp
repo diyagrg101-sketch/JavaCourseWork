@@ -12,18 +12,17 @@
 
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
-<!-- BACK LINK -->
 <div style="padding:20px 48px 0">
     <a href="${ctx}/manageProducts" style="font-size:.84rem;color:var(--text-muted);display:flex;align-items:center;gap:5px">‹ Back to Menu</a>
 </div>
 
-<!-- CART LAYOUT -->
+
 <div class="cart-layout">
-    <!-- LEFT -->
+
     <div>
         <div class="cart-title">Your Cart<span class="cart-count">3 Items</span></div>
 
-        <!-- ITEM 1 -->
+
         <div class="cart-item">
             <img src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut Cappuccino"/>
             <div class="cart-item-body">
@@ -31,7 +30,7 @@
                     Hazelnut Cappuccino
                 </div>
                 <div class="cart-item-desc">
-                    House special with organic yak milk and cinnamon powder.
+                    House special with organic milk and cinnamon powder.
                 </div>
                 <div style="display:flex;gap:6px;flex-wrap:wrap">
                     <span class="tag tag-orange">Extra Shot</span>
@@ -50,7 +49,7 @@
             <button class="cart-delete">🗑</button>
         </div>
 
-        <!-- ITEM 2 -->
+
         <div class="cart-item">
             <img src="${ctx}/assets/images/blueberryCheesecake.jpg" alt="Blueberry Cheesecake"/>
             <div class="cart-item-body">
@@ -58,7 +57,7 @@
                     Blueberry Cheesecake
                 </div>
                 <div class="cart-item-desc">
-                    Rich creamy cheesecake with fresh local blueberry coulis.
+                    Rich creamy cheesecake with fresh local blueberry.
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
                     <span class="cart-item-price">
@@ -74,7 +73,7 @@
             <button class="cart-delete">🗑</button>
         </div>
 
-        <!-- ITEM 3 -->
+
         <div class="cart-item">
             <img src="${ctx}/assets/images/avocadoTaost.jpg" alt="Avocado Toast"/>
             <div class="cart-item-body">
@@ -103,7 +102,7 @@
             <button class="cart-delete">🗑</button>
         </div>
 
-        <!-- NOTE -->
+
         <div class="special-note">
             <span style="font-size:1rem;color:var(--orange)">ℹ️</span>
             <div>
@@ -112,7 +111,7 @@
         </div>
     </div>
 
-    <!-- ORDER SUMMARY -->
+
     <div class="order-summary">
         <h3>Order Summary</h3>
         <div class="promo-row">

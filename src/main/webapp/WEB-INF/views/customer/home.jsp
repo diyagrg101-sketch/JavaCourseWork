@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <!-- =================== SIGNATURE DELIGHTS (DB-DRIVEN) =================== -->
+    <!-- =================== SIGNATURE DELIGHTS =================== -->
     <section class="signature" id="menu">
         <div class="container">
             <div class="section-heading">

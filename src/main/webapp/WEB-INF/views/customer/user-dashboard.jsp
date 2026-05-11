@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <!-- RECOMMENDED -->
+        <!-- RECOMMENDED SECTION-->
         <div class="section-head">
             <div>
                 <div class="section-title">⭐ Recommended for You</div>
@@ -102,7 +102,7 @@
         <div class="rec-grid" style="margin-bottom:24px">
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut Cappuccino"/>
+                    <img class="rec-img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut Cappuccino"/>
                     <div class="rec-rating">⭐ 4.8</div>
                 </div>
                 <div class="rec-body">
@@ -113,7 +113,7 @@
             </div>
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img src="${ctx}/assets/images/cheesecake.jpg" alt="CheeseCake"/>
+                    <img class="rec-img" src="${ctx}/assets/images/cheesecake.jpg" alt="CheeseCake"/>
                     <div class="rec-rating">⭐ 4.9</div>
                 </div>
                 <div class="rec-body">
@@ -124,7 +124,7 @@
             </div>
             <div class="rec-card">
                 <div class="rec-img-wrap">
-                    <img src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+                    <img class="rec-img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
                 </div>
                 <div class="rec-body">
                     <div class="rec-name-row"><span class="rec-name">Paneer Tikka Wrap</span><span class="rec-price">NPR 300</span></div>
@@ -134,9 +134,8 @@
             </div>
         </div>
 
-        <!-- PROMO BANNER -->
         <div class="promo-banner">
-            <img class="promo-bg" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80" alt="Promo"/>
+            <img class="promo-bg" src="${ctx}/assets/images/promo.jpg" alt="Promo"/>
             <div class="promo-overlay"></div>
             <div class="promo-content">
                 <div class="promo-badge">Limited Offer</div>
