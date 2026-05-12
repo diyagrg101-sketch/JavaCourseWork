@@ -16,8 +16,19 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Get existing session without creating a new one
+        HttpSession session = request.getSession(false);
 
-        // Forward to cart.jsp
+        // Check if session exists and cart is available
+        if (session == null || session.getAttribute("cart") == null) {
+
+            // If no cart exists, send an empty list to JSP
+            request.setAttribute("cart", new ArrayList<>());
+        } else {
+            // If cart exists in session, pass it to JSP
+            request.setAttribute("cart", session.getAttribute("cart"));
+        }
+        // Forward request to cart.jsp page for display
         request.getRequestDispatcher("/WEB-INF/views/customer/cart.jsp")
                 .forward(request, response);
     }
@@ -51,9 +62,22 @@ public class CartServlet extends HttpServlet {
             cart = new ArrayList<>();
         }
 
-        // add item
-        String[] item = {name, price, image};
-        cart.add(item);
+        //Add item to cart
+        if (name != null && price != null && image != null
+                && !name.isEmpty()
+                && !price.isEmpty()
+                && !image.isEmpty()) {
+            // Item format: {name, price, image, quantity}
+            String[] item = {
+                    name,
+                    price,
+                    image,
+                    "1" // default quantity
+            };
+
+            // add item to cart
+            cart.add(item);
+        }
 
         // save back to session
         userSession.setAttribute("cart", cart);

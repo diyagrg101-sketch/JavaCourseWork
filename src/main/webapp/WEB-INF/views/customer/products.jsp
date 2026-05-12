@@ -366,7 +366,7 @@
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Avocado Toast">
                 <input type="hidden" name="price" value="400">
-                <input type="hidden" name="image" value="avocadoToast.jpg">
+                <input type="hidden" name="image" value="avocadoTaost.jpg">
 
                 <button type="submit" class="btn-cart">
                     Add to Cart +
