@@ -5,9 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <%@ include file="/WEB-INF/views/common/header.jsp" %>
-</head>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
 
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
