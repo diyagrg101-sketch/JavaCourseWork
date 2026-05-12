@@ -70,7 +70,15 @@
             </div>
             <p class="menu-full-desc">A sweet, blended iced coffee with caramel.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Caramel Macchiato Frappe">
+                <input type="hidden" name="price" value="250">
+                <input type="hidden" name="image" value="caramel-frappe.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -83,7 +91,15 @@
             </div>
             <p class="menu-full-desc">Moist dessert made with cocoa.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Chocolate Cake">
+                <input type="hidden" name="price" value="200">
+                <input type="hidden" name="image" value="chocolate-cake.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -96,7 +112,15 @@
             </div>
             <p class="menu-full-desc">Freshly prepared sandwich.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Sandwich">
+                <input type="hidden" name="price" value="200">
+                <input type="hidden" name="image" value="sandwich.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -109,7 +133,15 @@
             </div>
             <p class="menu-full-desc">Smooth espresso with milk.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Latte">
+                <input type="hidden" name="price" value="350">
+                <input type="hidden" name="image" value="latte.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -122,7 +154,15 @@
             </div>
             <p class="menu-full-desc">Simple snack of toasted bread with sweet fruit jam.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Jam Toast">
+                <input type="hidden" name="price" value="200">
+                <input type="hidden" name="image" value="jam-toast.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -135,7 +175,15 @@
             </div>
             <p class="menu-full-desc">Refreshing tea with milk.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Milk Tea">
+                <input type="hidden" name="price" value="150">
+                <input type="hidden" name="image" value="milktea.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -148,7 +196,15 @@
             </div>
             <p class="menu-full-desc">Milk tea with spices like cardamom, ginger, and cloves.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Masala Tea">
+                <input type="hidden" name="price" value="180">
+                <input type="hidden" name="image" value="masala chai.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -161,7 +217,15 @@
             </div>
             <p class="menu-full-desc">Rich, fudgy chocolate dessert.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Brownie">
+                <input type="hidden" name="price" value="200">
+                <input type="hidden" name="image" value="brownie.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -174,7 +238,15 @@
             </div>
             <p class="menu-full-desc">Smooth and earthy Japanese green tea.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Matcha Tea">
+                <input type="hidden" name="price" value="290">
+                <input type="hidden" name="image" value="matcha.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -187,7 +259,15 @@
             </div>
             <p class="menu-full-desc">Paneer Tikka Wrap is a smoky, spiced paneer roll.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Paneer Tikka Wrap">
+                <input type="hidden" name="price" value="300">
+                <input type="hidden" name="image" value="paneer tikka.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -200,7 +280,15 @@
             </div>
             <p class="menu-full-desc">Rich espresso blended with silky steamed milk and a hint of premium hazelnut syrup.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Hazelnut Cappuccino">
+                <input type="hidden" name="price" value="450">
+                <input type="hidden" name="image" value="hazelhut.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -213,7 +301,15 @@
             </div>
             <p class="menu-full-desc">Cheesecake is a creamy, tangy dessert layered on a buttery biscuit crust.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Cheesecake">
+                <input type="hidden" name="price" value="250">
+                <input type="hidden" name="image" value="cheesecake.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
     <div class="menu-full-card">
@@ -225,7 +321,15 @@
             </div>
             <p class="menu-full-desc">Rich creamy cheesecake with fresh local blueberry.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Blueberry Cheesecake">
+                <input type="hidden" name="price" value="650">
+                <input type="hidden" name="image" value="blueberryCheesecake.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -238,7 +342,15 @@
             </div>
             <p class="menu-full-desc">House special with organic milk and cinnamon powder.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Hazelnut Cappuccino">
+                <input type="hidden" name="price" value="450">
+                <input type="hidden" name="image" value="hazelhut.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 
@@ -251,7 +363,15 @@
             </div>
             <p class="menu-full-desc">Sourdough bread, mashed avocado, poached egg, and chili flakes.</p>
             <div class="freshly-label">ℹ️ Freshly Made</div>
-            <button class="btn-cart">Add to Cart +</button>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Avocado Toast">
+                <input type="hidden" name="price" value="400">
+                <input type="hidden" name="image" value="avocadoToast.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
         </div>
     </div>
 

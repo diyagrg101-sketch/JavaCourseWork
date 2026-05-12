@@ -1,98 +1,114 @@
 /* ===========================================================
-   REGISTER PAGE
+   AUTH / REGISTER PAGE - NO-OVERFLOW VERSION
    =========================================================== */
+
+:root {
+    --color-primary: #c97116;
+    --color-bg-soft: #fcfcfc;
+    --color-card: #ffffff;
+    --color-text-light: #666666;
+    --color-border: #e0e0e0;
+    --radius-lg: 15px;
+    --radius-sm: 8px;
+}
+
 html, body {
-    height: 100%;
+    /* Changed height to min-height to prevent clipping */
+    min-height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
+    background: var(--color-bg-soft);
 }
 
 .auth-page {
-    height: 100vh;
-    background: var(--color-bg-soft);
+    /* min-height ensures it fills the screen but can grow if needed */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 20px 10px;
+    box-sizing: border-box;
 }
 
 /* ==============================
-   MAIN CARD (Compact Height)
+   MAIN CARD - DYNAMIC HEIGHT
    ============================== */
 .auth-card {
     background: var(--color-card);
     border-radius: var(--radius-lg);
     width: 100%;
-    max-width: 410px;
-    padding: 12px 22px;
+    max-width: 420px;
+    /* Changed from fixed height to auto-height with a safety max */
+    height: auto;
+    max-height: 95vh;
+    padding: 20px 25px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    max-height: 98vh;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    /* Standardizes internal scroll if screen is too short */
     overflow-y: auto;
 }
 
 /* ==============================
-   LOGO & TITLES (Tightened)
+   LOGO & TITLES (Compact)
    ============================== */
 .auth-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4px;
+    gap: 4px;
+    margin-bottom: 10px;
 }
 
 .auth-logo-icon {
-    width: 32px; /* Smallest usable circle */
-    height: 32px;
+    width: 36px;
+    height: 36px;
     background: var(--color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .auth-logo span {
     font-weight: 700;
     color: var(--color-primary);
-    font-size: 0.8rem;
-    margin-top: 2px;
+    font-size: 0.85rem;
 }
 
 .auth-card h2 {
     text-align: center;
-    font-size: 1.1rem;
-    margin: 2px 0;
+    font-size: 1.2rem;
+    margin: 0 0 4px 0;
     font-family: 'Playfair Display', serif;
 }
 
 .auth-subtitle {
     text-align: center;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     color: var(--color-text-light);
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 /* ==============================
-   PROFILE AREA (Miniaturized)
+   PROFILE AREA
    ============================== */
 .profile-pic-area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .profile-pic-circle {
-    width: 45px; /* Shrunk from 70px */
-    height: 45px;
+    width: 55px;
+    height: 55px;
     position: relative;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .profile-pic-circle .circle {
@@ -106,80 +122,78 @@ html, body {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 16px;
-    height: 16px;
-    font-size: 0.5rem;
+    width: 18px;
+    height: 18px;
+    font-size: 0.55rem;
     background: var(--color-primary);
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #fff;
+    border: 1.5px solid #fff;
 }
 
-.profile-pic-label { font-size: 0.7rem; font-weight: 600; }
-.profile-pic-sublabel { font-size: 0.6rem; color: #888; }
+.profile-pic-label { font-size: 0.75rem; font-weight: 600; }
+.profile-pic-sublabel { font-size: 0.65rem; color: #888; }
 
 /* ==============================
-   FORM (Ultra-Compact)
+   FORM (Tightened spacing)
    ============================== */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 10px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    margin-bottom: 6px;
+    gap: 3px;
+    margin-bottom: 10px;
 }
 
 .form-group label {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    color: #444;
 }
 
 .form-group input {
-    padding: 6px 10px;
-    font-size: 0.75rem;
-    border: 1px solid var(--color-border);
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    border: 1.5px solid var(--color-border);
     border-radius: var(--radius-sm);
 }
 
 .input-icon .icon {
-    left: 8px;
-    font-size: 0.65rem;
+    left: 10px;
+    font-size: 0.75rem;
 }
-.input-icon input { padding-left: 28px; }
+.input-icon input { padding-left: 32px; }
 
 /* ==============================
-   FOOTER (Condensed)
+   FOOTER
    ============================== */
 .checkbox-row {
     display: flex;
-    gap: 5px;
-    margin: 4px 0 10px 0;
+    gap: 8px;
+    margin: 5px 0 15px 0;
 }
 
 .checkbox-row input {
-    width: 12px;
-    height: 12px;
-    margin-top: 1px;
+    width: 14px;
+    height: 14px;
 }
 
 .checkbox-row label {
-    font-size: 0.58rem;
-    line-height: 1.1;
+    font-size: 0.65rem;
+    line-height: 1.2;
 }
 
 .btn-full {
     width: 100%;
-    padding: 8px;
-    font-size: 0.8rem;
+    padding: 10px;
+    font-size: 0.9rem;
     font-weight: 600;
     background: var(--color-primary);
     color: #fff;
@@ -190,10 +204,9 @@ html, body {
 
 .auth-link {
     text-align: center;
-    font-size: 0.7rem;
-    margin-top: 8px;
+    font-size: 0.75rem;
+    margin-top: 12px;
 }
-
 
 /*--------Login---------------*/
 * {
