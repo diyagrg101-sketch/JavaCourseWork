@@ -1,4 +1,4 @@
-package com.sipserve.controller.admin;
+package com.sipserve.controller.customer;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/manageOrder")
-public class ManageOrderServlet extends HttpServlet {
+@WebServlet("/orderConfirmation")
+public class OrderConfirmationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -17,7 +17,7 @@ public class ManageOrderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getRequestDispatcher(
-                        "/WEB-INF/views/admin/manage-orders.jsp")
+                        "/WEB-INF/views/customer/order-confirmation.jsp")
                 .forward(request, response);
     }
 }

@@ -16,8 +16,8 @@
                 Home
             </a>
 
-            <a href="${ctx}/manageProducts"
-               class="nav-link ${uri.contains('/manageProducts') ? 'active' : ''}">
+            <a href="${ctx}/menu"
+               class="nav-link ${uri.contains('/menu') ? 'active' : ''}">
                 Menu
             </a>
 

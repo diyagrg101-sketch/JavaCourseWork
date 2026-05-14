@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/manageOrder")
-public class ManageOrderServlet extends HttpServlet {
+@WebServlet("/report")
+public class ReportServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -17,7 +17,7 @@ public class ManageOrderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getRequestDispatcher(
-                        "/WEB-INF/views/admin/manage-orders.jsp")
+                        "/WEB-INF/views/admin/reports.jsp")
                 .forward(request, response);
     }
 }

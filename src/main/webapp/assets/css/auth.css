@@ -443,3 +443,160 @@ h2 {
 .fb-icon { color: #1877f2; font-style: normal; }
 /*------End of login-------*/
 
+
+/* ── LOGOUT PAGE ── */
+.logout-page {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.logout-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 60px solid rgba(200,104,10,.06);
+    pointer-events: none;
+}
+.logout-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+}
+.logout-icon-wrap {
+    width: 72px; height: 72px;
+    background: #fff0f0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 18px;
+    border: 2px solid rgba(198,40,40,.15);
+}
+.logout-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+.logout-card p  { font-size: .85rem; color: var(--text-muted); margin-bottom: 26px; line-height: 1.6; }
+.logout-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 18px 0; font-size: .76rem; color: var(--text-muted);
+}
+.logout-divider::before,
+.logout-divider::after { content: ''; flex: 1; border-top: 1px solid var(--border); }
+.logout-session-info {
+    background: var(--bg);
+    border-radius: var(--r-sm);
+    padding: 12px 16px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.logout-session-info h4 { font-size: .8rem; font-weight: 700; margin-bottom: 6px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+.session-row {
+    display: flex; justify-content: space-between;
+    font-size: .8rem; padding: 3px 0;
+    color: var(--text-mid);
+}
+.session-row span:last-child { font-weight: 600; color: var(--text); }
+.logout-actions { display: flex; flex-direction: column; gap: 10px; }
+.btn-logout-confirm {
+    width: 100%; padding: 13px;
+    background: #C62828; color: #fff;
+    border: none; border-radius: var(--r-sm);
+    font-size: .95rem; font-weight: 700; cursor: pointer;
+    transition: background .2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-logout-confirm:hover { background: #a00; }
+.btn-stay {
+    width: 100%; padding: 12px;
+    background: #fff; color: var(--text);
+    border: 1.5px solid var(--border); border-radius: var(--r-sm);
+    font-size: .92rem; font-weight: 600; cursor: pointer;
+    transition: all .2s;
+}
+.btn-stay:hover { border-color: var(--orange); color: var(--orange); }
+.logout-footer {
+    margin-top: 22px; font-size: .74rem; color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; text-transform: uppercase; letter-spacing: .08em;
+}
+.logout-footer::before, .logout-footer::after { content: '▪'; }
+
+/* ── STATUS BADGES ── */
+.badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: .72rem; font-weight: 700;
+}
+.badge-success { background: #e8f5e9; color: #2e7d32; }
+.badge-warning { background: #fff8e1; color: #e65100; }
+.badge-danger  { background: #ffebee; color: #c62828; }
+.badge-info    { background: #e3f2fd; color: #1565c0; }
+.badge-gray    { background: #f5f5f5; color: #666; }
+.badge-orange  { background: var(--orange-bg); color: var(--orange); }
+
+/* ── INLINE EDIT FORM (category card grid) ── */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.category-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color .2s;
+}
+.category-card:hover { border-color: var(--orange); }
+.category-card-ico {
+    width: 46px; height: 46px;
+    border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+.category-card-body { flex: 1; min-width: 0; }
+.category-card-name { font-size: .88rem; font-weight: 700; margin-bottom: 2px; }
+.category-card-count { font-size: .76rem; color: var(--text-muted); margin-bottom: 8px; }
+.category-card-actions { display: flex; gap: 6px; }
+
+/* ── USER ROLE BADGE ── */
+.role-badge {
+    display: inline-block;
+    padding: 3px 9px; border-radius: 20px;
+    font-size: .7rem; font-weight: 700;
+}
+.role-admin    { background: rgba(200,104,10,.15); color: var(--orange); }
+.role-customer { background: #e3f2fd; color: #1565c0; }
+.role-staff    { background: #e8f5e9; color: #2e7d32; }
+
+/* ── AVATAR CELL ── */
+.user-avatar-cell { display: flex; align-items: center; gap: 10px; }
+.user-avatar-sm {
+    width: 34px; height: 34px;
+    border-radius: 50%; background: #D9D9D9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .78rem; font-weight: 700; color: var(--text-muted);
+    flex-shrink: 0; overflow: hidden;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+}
+.empty-state .ico { font-size: 2.5rem; margin-bottom: 12px; }
+.empty-state h3   { font-size: .95rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.empty-state p    { font-size: .82rem; margin-bottom: 16px; }

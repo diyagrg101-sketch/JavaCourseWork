@@ -11,7 +11,7 @@
 
 <div class="dashboard-layout">
     <!-- LEFT SIDEBAR -->
-    <div>
+    <div class="dashboard-sidebar">
         <div class="wallet-card">
             <div class="wallet-label">Wallet Balance</div>
             <div class="wallet-amount">NPR 12,450</div>
@@ -29,17 +29,26 @@
             </div>
         </div>
 
-        <div class="active-order-card">
+        <div class="order-confirmation-card">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
                 <span style="font-size:1rem">☕</span>
                 <div>
-                    <div class="ao-label">Active Order</div>
-                    <div class="ao-id">#8821</div>
+                    <div class="occ-label">Confirmed Order</div>
                 </div>
             </div>
-            <div class="ao-status">Kitchen is preparing your brew...</div>
-            <a href="order-tracking.html" class="track-link">Track Live ›</a>
+            <div class="occ-status">Your order is confirmed...</div>
+            <a href="${ctx}/orderConfirmation" class="order-confirmation-link">Order Confirmation ›</a>
         </div>
+
+        <div class="sidebar-bottom">
+
+            <a href="${ctx}/logout" class="signout">
+                <span class="sidebar-ico">↩</span>
+                Logout
+            </a>
+
+        </div>
+
     </div>
 
     <!-- MAIN -->

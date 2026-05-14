@@ -16,7 +16,7 @@
             <h4 class="footer-title">Quick Links</h4>
             <ul class="footer-links">
                 <li><a href="${ctx}/home">Home</a></li>
-                <li><a href="${ctx}/manageProducts">Menu</a></li>
+                <li><a href="${ctx}/menu">Menu</a></li>
                 <li><a href="${ctx}/about">About Us</a></li>
                 <li><a href="${ctx}/contact">Contact</a></li>
             </ul>

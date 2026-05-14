@@ -12,8 +12,11 @@
 
 
 <div class="feedback-page">
+    <a href="${ctx}/dashboard" class="go-dashboard-btn">
+        ← Go to Dashboard
+    </a>
     <!-- HEADER -->
-    <div class="fb-badge">Voice of the Community</div>
+
     <h1 class="fb-title">Share Your Experience</h1>
     <p class="fb-sub">
         Your reviews help us brew better coffee and serve warmer memories.
