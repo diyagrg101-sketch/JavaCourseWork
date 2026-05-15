@@ -49,6 +49,18 @@
                 <input type="password" name="password" required />
             </div>
 
+            <div style="text-align:right; margin-top:6px;">
+            <a href="${pageContext.request.contextPath}/forgetPassword"
+               class="cp-forgot-link"
+               style="
+            font-size:.62rem;
+            color:#8b5e3c;
+            text-decoration:none;
+            font-weight:500;
+            transition:.2s;">
+                Forgot your password?</a>
+            </div>
+
             <button type="submit" class="btn-full solid">
                 Sign In to Your Account →
             </button>

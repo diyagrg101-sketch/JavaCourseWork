@@ -1,4 +1,4 @@
-package com.sipserve.controller.customer;
+package com.sipserve.controller.auth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/profile")
-public class ProfileServlet extends HttpServlet {
-
+@WebServlet("/forgetPassword")
+public class ForgetPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
 
         request.getRequestDispatcher(
-                "/WEB-INF/views/customer/profile.jsp"
-        ).forward(request, response);
+                        "/WEB-INF/views/customer/forget-password.jsp")
+                .forward(request, response);
     }
 }
