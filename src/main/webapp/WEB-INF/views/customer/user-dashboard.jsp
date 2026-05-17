@@ -64,7 +64,7 @@
         <!-- REORDER -->
         <div class="section-head">
             <div class="section-title">🔄 Reorder Your Favorites</div>
-            <a href="${ctx}/manageProducts" class="see-all">See All ›</a>
+            <a href="${ctx}/menu" class="see-all">See All ›</a>
         </div>
         <div class="reorder-grid" style="margin-bottom:28px">
             <div class="reorder-card">

@@ -197,33 +197,57 @@ public class UserDAO {
         }
         return result;
     }
+    // =========================
+// CHECK CURRENT PASSWORD
+// =========================
+    public boolean checkCurrentPassword(String email, String currentPassword) {
 
-    public boolean checkOldPassword(String email, String password) {
-        boolean exists = false;
+        boolean match = false;
+
         String sql = "SELECT * FROM users WHERE email=? AND password=?";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setString(1, email);
-            ps.setString(2, password);
+            ps.setString(2, currentPassword);
+
             ResultSet rs = ps.executeQuery();
-            exists = rs.next();
+
+            if(rs.next()) {
+                match = true;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return exists;
+
+        return match;
     }
 
-    public void updatePassword(String email, String newPassword) {
+
+    // =========================
+// UPDATE PASSWORD
+// =========================
+    public boolean updatePassword(String email, String newPassword) {
+
+        boolean updated = false;
+
         String sql = "UPDATE users SET password=? WHERE email=?";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setString(1, newPassword);
             ps.setString(2, email);
-            ps.executeUpdate();
+
+            updated = ps.executeUpdate() > 0;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+        return updated;
+    }
 
 }

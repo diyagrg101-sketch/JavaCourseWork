@@ -316,39 +316,25 @@
 
     /* ── FULL FORM VALIDATE ── */
     function validateForm() {
+
         const cur = document.getElementById('currentPassword').value.trim();
         const np  = document.getElementById('newPassword').value.trim();
         const cp  = document.getElementById('confirmPassword').value.trim();
+
         let ok = true;
 
         if (!cur) {
-            document.getElementById('err-current').textContent = 'Please enter your current password.';
-            document.getElementById('currentPassword').classList.add('cp-input-error');
-            ok = false;
-        }
-        if (!np || np.length < 8) {
-            document.getElementById('err-new').textContent = 'Password must be at least 8 characters.';
-            document.getElementById('newPassword').classList.add('cp-input-error');
-            ok = false;
-        }
-        if (cur && np && cur === np) {
-            document.getElementById('err-new').textContent = 'New password must differ from your current password.';
-            document.getElementById('newPassword').classList.add('cp-input-error');
-            ok = false;
-        }
-        if (!cp || cp !== np) {
-            document.getElementById('err-confirm').textContent = 'Passwords do not match.';
-            document.getElementById('confirmPassword').classList.add('cp-input-error');
-            document.getElementById('matchOk').style.display = 'none';
             ok = false;
         }
 
-        if (ok) {
-            /* show spinner */
-            document.getElementById('submitText').style.display    = 'none';
-            document.getElementById('submitSpinner').style.display = 'inline-block';
-            document.getElementById('submitBtn').disabled          = true;
+        if (!np || np.length < 8) {
+            ok = false;
         }
+
+        if (!cp || cp !== np) {
+            ok = false;
+        }
+
         return ok;
     }
 </script>

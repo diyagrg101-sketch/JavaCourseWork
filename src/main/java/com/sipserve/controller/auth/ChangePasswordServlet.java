@@ -28,8 +28,7 @@ public class ChangePasswordServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String email =
-                (String) session.getAttribute("email");
+        String email = (String) session.getAttribute("email");
 
         String currentPassword =
                 request.getParameter("currentPassword");
@@ -40,46 +39,62 @@ public class ChangePasswordServlet extends HttpServlet {
         String confirmPassword =
                 request.getParameter("confirmPassword");
 
-        // confirm check
+        UserDAO dao = new UserDAO();
+
+        // confirm password mismatch
         if(!newPassword.equals(confirmPassword)) {
 
-            request.setAttribute(
-                    "error",
-                    "Passwords do not match"
+            session.setAttribute(
+                    "cp_error",
+                    "Passwords do not match."
             );
 
-            request.getRequestDispatcher(
-                    "/WEB-INF/views/customer/change-password.jsp"
-            ).forward(request, response);
+            response.sendRedirect(
+                    request.getContextPath() + "/changePassword"
+            );
 
             return;
         }
 
-        UserDAO dao = new UserDAO();
+        // current password wrong
+        boolean validCurrent =
+                dao.checkCurrentPassword(email, currentPassword);
 
-        // old password verify
-        boolean valid =
-                dao.checkOldPassword(email, currentPassword);
+        if(!validCurrent) {
 
-        if(!valid) {
-
-            request.setAttribute(
-                    "error",
-                    "Current password incorrect"
+            session.setAttribute(
+                    "cp_error",
+                    "Current password is incorrect."
             );
 
-            request.getRequestDispatcher(
-                    "/WEB-INF/views/customer/change-password.jsp"
-            ).forward(request, response);
+            response.sendRedirect(
+                    request.getContextPath() + "/changePassword"
+            );
 
             return;
         }
 
         // update password
-        dao.updatePassword(email, newPassword);
+        boolean updated =
+                dao.updatePassword(email, newPassword);
+
+        if(updated) {
+
+            session.setAttribute(
+                    "cp_success",
+                    "Password updated successfully."
+            );
+
+        } else {
+
+            session.setAttribute(
+                    "cp_error",
+                    "Failed to update password."
+            );
+        }
 
         response.sendRedirect(
-                request.getContextPath() + "/profile"
+                request.getContextPath() + "/changePassword"
         );
     }
 }

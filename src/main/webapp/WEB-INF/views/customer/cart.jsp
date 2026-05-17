@@ -26,7 +26,7 @@
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
 <div style="padding:20px 48px 0">
-    <a href="${ctx}/manageProducts" style="font-size:.84rem;color:var(--text-muted);display:flex;align-items:center;gap:5px">‹ Back to Menu</a>
+    <a href="${ctx}/menu" style="font-size:.84rem;color:var(--text-muted);display:flex;align-items:center;gap:5px">‹ Back to Menu</a>
 </div>
 
 
