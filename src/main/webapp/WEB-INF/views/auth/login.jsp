@@ -32,12 +32,14 @@
         <% } %>
 
         <div class="login-tabs">
-            <button type="button" class="login-tab active" onclick="setTab(this)">👤 Member</button>
-            <button type="button" class="login-tab" onclick="setTab(this)">🛡️ Admin Portal</button>
+            <button type="button" class="login-tab active" onclick="setTab(this, 'member')">👤 Member</button>
+            <button type="button" class="login-tab" onclick="setTab(this, 'admin')">🛡️ Admin Portal</button>
         </div>
 
         <!-- LOGIN FORM -->
         <form action="${pageContext.request.contextPath}/login" method="post">
+
+            <input type="hidden" name="loginType" id="loginType" value="member">
 
             <div class="form-group">
                 <label>Email or Phone Number</label>
@@ -91,9 +93,14 @@
 </div>
 
 <script>
-    function setTab(el) {
-        document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+    function setTab(el, type) {
+
+        document.querySelectorAll('.login-tab')
+            .forEach(t => t.classList.remove('active'));
+
         el.classList.add('active');
+
+        document.getElementById('loginType').value = type;
     }
 </script>
 

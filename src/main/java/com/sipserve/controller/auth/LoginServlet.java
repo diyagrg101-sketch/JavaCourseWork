@@ -28,10 +28,11 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String loginType = request.getParameter("loginType");
 
         UserDAO dao = new UserDAO();
 
-        String role = dao.validateLogin(email, password);
+        String role = dao.validateLogin(email, password, loginType);
 
         if (role != null) {
 
@@ -48,7 +49,7 @@ public class LoginServlet extends HttpServlet {
             if ("ADMIN".equalsIgnoreCase(role)) {
 
                 response.sendRedirect(
-                        request.getContextPath() + "/admin/dashboard"
+                        request.getContextPath() + "/adminDashboard"
                 );
 
             }

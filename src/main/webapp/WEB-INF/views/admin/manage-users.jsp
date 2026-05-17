@@ -42,16 +42,15 @@
             <div class="stat-sum-card">
                 <div class="stat-sum-ico">👥</div>
                 <div>
-                    <div class="stat-sum-val">1,240</div>
+                    <div class="stat-sum-val">${totalUsers}</div>
                     <div class="stat-sum-label">Total Users</div>
-                    <div class="stat-sum-trend">↗ +18% this month</div>
                 </div>
             </div>
 
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:#e3f2fd">👤</div>
                 <div>
-                    <div class="stat-sum-val">1,225</div>
+                    <div class="stat-sum-val">${totalCustomers}</div>
                     <div class="stat-sum-label">Customers</div>
                 </div>
             </div>
@@ -59,7 +58,7 @@
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:rgba(200,104,10,.12)">🛡️</div>
                 <div>
-                    <div class="stat-sum-val">8</div>
+                    <div class="stat-sum-val">${totalAdmins}</div>
                     <div class="stat-sum-label">Staff / Admin</div>
                 </div>
             </div>
@@ -67,7 +66,7 @@
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:#ffebee">🚫</div>
                 <div>
-                    <div class="stat-sum-val">7</div>
+                    <div class="stat-sum-val">0</div>
                     <div class="stat-sum-label">Suspended</div>
                 </div>
             </div>
@@ -115,38 +114,83 @@
                     <th>Actions</th>
                 </tr>
                 </thead>
-
                 <tbody>
 
-                <!-- Example row (static same as yours) -->
-                <tr>
-                    <td><input type="checkbox"/></td>
+                <c:forEach var="user" items="${users}">
 
-                    <td>
-                        <div class="user-avatar-cell">
-                            <div class="user-avatar-sm">AK</div>
-                            <div>
-                                <div style="font-weight:600;font-size:.85rem">Arjun Karki</div>
-                                <div style="font-size:.74rem;color:var(--text-muted)">arjun.karki@example.com</div>
+                    <tr>
+
+                        <td><input type="checkbox"/></td>
+
+                        <td>
+                            <div class="user-avatar-cell">
+
+                                <div class="user-avatar-sm">
+                                        ${user.fullName.charAt(0)}
+                                </div>
+
+                                <div>
+                                    <div style="font-weight:600;font-size:.85rem">
+                                            ${user.fullName}
+                                    </div>
+
+                                    <div style="font-size:.74rem;color:var(--text-muted)">
+                                            ${user.email}
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                    </td>
+                        </td>
 
-                    <td>Customer</td>
-                    <td style="font-size:.82rem">+977 9801234567</td>
-                    <td style="font-weight:600">24</td>
-                    <td style="font-weight:600;color:var(--orange)">NPR 1,250</td>
-                    <td style="font-size:.8rem;color:var(--text-muted)">Oct 2022</td>
-                    <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                                ${user.role}
+                        </td>
 
-                    <td>
-                        <div class="tbl-actions">
-                            <button class="tbl-btn" onclick="openModal('viewUserModal')">👁️</button>
-                            <button class="tbl-btn" onclick="openModal('editUserModal')">✏️</button>
-                            <button class="tbl-btn danger">🚫</button>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            -
+                        </td>
+
+                        <td style="font-weight:600">
+                            0
+                        </td>
+
+                        <td style="font-weight:600;color:var(--orange)">
+                            NPR 0
+                        </td>
+
+                        <td style="font-size:.8rem;color:var(--text-muted)">
+                            -
+                        </td>
+
+                        <td>
+            <span class="badge badge-success">
+                Active
+            </span>
+                        </td>
+
+                        <td>
+
+                            <div class="tbl-actions">
+
+                                <button class="tbl-btn">
+                                    👁️
+                                </button>
+
+                                <button class="tbl-btn">
+                                    ✏️
+                                </button>
+
+                                <button class="tbl-btn danger">
+                                    🗑️
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </c:forEach>
 
                 </tbody>
             </table>

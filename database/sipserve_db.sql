@@ -3,6 +3,16 @@
 CREATE DATABASE IF NOT EXISTS sipserve_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE sipserve_db;
 
+CREATE TABLE users (
+                       id         INT AUTO_INCREMENT PRIMARY KEY,
+                       full_name  VARCHAR(100) NOT NULL,
+                       email      VARCHAR(150) NOT NULL UNIQUE,
+                       password   VARCHAR(255) NOT NULL,
+                       role       ENUM('CUSTOMER','ADMIN') DEFAULT 'CUSTOMER',
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
 CREATE TABLE categories (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(50)  NOT NULL UNIQUE,
@@ -43,11 +53,3 @@ INSERT INTO products (name, description, price, rating, image_url, category_id, 
     ('Jam Toast',                'Crisp toast served with house-made fruit jam.',                                               150.00, 4.2, 'jam-toast.jpg',      3, 0);
 
 
-CREATE TABLE users (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    full_name  VARCHAR(100) NOT NULL,
-    email      VARCHAR(150) NOT NULL UNIQUE,
-    password   VARCHAR(255) NOT NULL,
-    role       ENUM('CUSTOMER','ADMIN') DEFAULT 'CUSTOMER',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;

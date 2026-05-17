@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.sipserve.util.DBConnection;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sipserve.model.User;
 
 public class UserDAO {
 
@@ -15,7 +19,7 @@ public class UserDAO {
 
         boolean result = false;
 
-        String sql = "INSERT INTO users(full_name, email, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users(full_name, email, password,role) VALUES (?, ?, ?,?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -23,6 +27,7 @@ public class UserDAO {
             ps.setString(1, fullname);
             ps.setString(2, email);
             ps.setString(3, password);
+            ps.setString(4, "CUSTOMER");
 
             result = ps.executeUpdate() > 0;
 
@@ -37,7 +42,7 @@ public class UserDAO {
     // =========================
     // LOGIN USER (NEW)
     // =========================
-    public String validateLogin(String email, String password) {
+    public String validateLogin(String email, String password, String loginType) {
 
         String role = null;
 
@@ -52,7 +57,22 @@ public class UserDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+
                 role = rs.getString("role");
+
+                if(loginType.equals("admin")) {
+
+                    if(!role.equalsIgnoreCase("admin")) {
+                        return null;
+                    }
+
+                }
+                else {
+
+                    if(role.equalsIgnoreCase("admin")) {
+                        return null;
+                    }
+                }
             }
 
         } catch (Exception e) {
@@ -61,6 +81,7 @@ public class UserDAO {
 
         return role;
     }
+
     // =========================
     // GET USER NAME BY EMAIL
     // =========================
@@ -86,5 +107,112 @@ public class UserDAO {
         }
 
         return fullname;
+    }
+
+    public List<User> getAllUsers() {
+
+        List<User> users = new ArrayList<>();
+
+        String sql = "SELECT * FROM users";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                User user = new User();
+
+                user.setId(rs.getInt("id"));
+                user.setFullName(rs.getString("full_name"));
+                user.setEmail(rs.getString("email"));
+                user.setRole(rs.getString("role"));
+
+                users.add(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    // =========================
+// TOTAL USERS
+// =========================
+    public int getTotalUsers() {
+
+        int count = 0;
+
+        String sql = "SELECT COUNT(*) FROM users";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+
+
+    // =========================
+    // TOTAL CUSTOMERS
+    // =========================
+    public int getTotalCustomers() {
+
+        int count = 0;
+
+        String sql = "SELECT COUNT(*) FROM users WHERE role='CUSTOMER'";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+
+
+    // =========================
+// TOTAL ADMINS
+// =========================
+    public int getTotalAdmins() {
+
+        int count = 0;
+
+        String sql = "SELECT COUNT(*) FROM users WHERE role='ADMIN'";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
     }
 }
