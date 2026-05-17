@@ -42,7 +42,7 @@
 <div class="menu-controls">
 
     <div class="sort-dropdown">
-        <select class="sort-btn">
+        <select class="sort-btn" id="sortCategory">
             <option value="all">⚙️ Sort By</option>
             <option value="snacks">Snacks</option>
             <option value="desserts">Desserts</option>
@@ -61,8 +61,8 @@
 <!-- ================= MENU GRID ================= -->
 <div class="menu-full-grid">
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/caramel-frappe.jpg" alt="Caramel Frappe"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/caramel-frappe.jpg" alt="Caramel Frappe"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Caramel Macchiato Frappe</span>
@@ -82,8 +82,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/chocolate-cake.jpg" alt="Chocolate Cake"/>
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/chocolate-cake.jpg" alt="Chocolate Cake"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Chocolate Cake</span>
@@ -103,8 +103,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/sandwich.jpg" alt="Sandwich"/>
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/sandwich.jpg" alt="Sandwich"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Sandwich</span>
@@ -124,8 +124,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/latte.jpg" alt="Latte"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/latte.jpg" alt="Latte"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Latte</span>
@@ -145,8 +145,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Jam Toast</span>
@@ -166,8 +166,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Milk Tea</span>
@@ -187,8 +187,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Masala Tea</span>
@@ -208,8 +208,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/brownie.jpg" alt="Brownie"/>
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/brownie.jpg" alt="Brownie"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Brownie</span>
@@ -229,8 +229,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/matcha.jpg" alt="Matcha Tea"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/matcha.jpg" alt="Matcha Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Matcha Tea</span>
@@ -250,8 +250,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Paneer Tikka Wrap</span>
@@ -271,8 +271,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Hazelnut Cappuccuino</span>
@@ -292,8 +292,8 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/cheesecake.jpg" alt="cheesecake"/>
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/cheesecake.jpg" alt="cheesecake"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Cheesecake</span>
@@ -312,8 +312,8 @@
             </form>
         </div>
     </div>
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/blueberryCheesecake.jpg" alt="Blueberry cheesecake"/>
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/blueberryCheesecake.jpg" alt="Blueberry cheesecake"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Blueberry Cheesecake</span>
@@ -333,29 +333,9 @@
         </div>
     </div>
 
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/hazelhut.jpg" alt="Hazelnut"/>
-        <div class="menu-full-info">
-            <div class="menu-full-top">
-                <span class="menu-full-name">Hazelnut Cappuccuino</span>
-                <span class="menu-full-price">NRs 450</span>
-            </div>
-            <p class="menu-full-desc">House special with organic milk and cinnamon powder.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
-            <form action="${ctx}/cart" method="post">
-                <input type="hidden" name="name" value="Hazelnut Cappuccino">
-                <input type="hidden" name="price" value="450">
-                <input type="hidden" name="image" value="hazelhut.jpg">
 
-                <button type="submit" class="btn-cart">
-                    Add to Cart +
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class="menu-full-card">
-        <img class="menu-full-card img" src="${ctx}/assets/images/avocadoTaost.jpg" alt="Avocado Toast"/>
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/avocadoTaost.jpg" alt="Avocado Toast"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
                 <span class="menu-full-name">Avocado Toast</span>
@@ -375,10 +355,104 @@
         </div>
     </div>
 
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/sizzling-brownie.jpg" alt="Sizzler Brownie"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Sizzler Brownie</span>
+                <span class="menu-full-price">NRs 350</span>
+            </div>
+            <p class="menu-full-desc">Hot fudgy brownie served with a scoop of vanilla ice cream.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Sizzler Brownie">
+                <input type="hidden" name="price" value="350">
+                <input type="hidden" name="image" value="sizzling-brownie.jpg">
+                <button type="submit" class="btn-cart">Add to Cart +</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="desserts">
+        <img class="menu-card-img" src="${ctx}/assets/images/apple-pie.jpg" alt="Apple Pie"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Apple Pie</span>
+                <span class="menu-full-price">NRs 220</span>
+            </div>
+            <p class="menu-full-desc">Classic spiced apple filling in a flaky crust, served warm.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Warm Apple Pie">
+                <input type="hidden" name="price" value="220">
+                <input type="hidden" name="image" value="apple-pie.jpg">
+                <button type="submit" class="btn-cart">Add to Cart +</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/Peri-Peri-Fries.png" alt="French Fries"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Peri Peri Fries</span>
+                <span class="menu-full-price">NRs 180</span>
+            </div>
+            <p class="menu-full-desc">Crispy golden fries tossed in a spicy peri-peri seasoning mix.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Peri Peri Fries">
+                <input type="hidden" name="price" value="180">
+                <input type="hidden" name="image" value="Peri-Peri-Fries.png">
+                <button type="submit" class="btn-cart">Add to Cart +</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/chicken-puff.jpg" alt="Chicken Puff"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Chicken Puff Pastry</span>
+                <span class="menu-full-price">NRs 120</span>
+            </div>
+            <p class="menu-full-desc">Flaky, golden puff pastry filled with seasoned minced chicken.</p>
+            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Bakery Chicken Puff">
+                <input type="hidden" name="price" value="120">
+                <input type="hidden" name="image" value="chicken-puff.jpg">
+                <button type="submit" class="btn-cart">Add to Cart +</button>
+            </form>
+        </div>
+    </div>
+
 
 </div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
+<script>
+    const sortDropdown = document.getElementById("sortCategory");
+    const cards = document.querySelectorAll(".menu-full-card");
+
+    sortDropdown.addEventListener("change", function () {
+
+        const selected = this.value;
+
+        cards.forEach(card => {
+
+            const category = card.getAttribute("data-category");
+
+            if (selected === "all" || category === selected) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+    });
+</script>
 
 </body>
 </html>
