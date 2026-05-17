@@ -1,7 +1,6 @@
 package com.sipserve.controller.customer;
 
 import java.io.IOException;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,73 +15,105 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get existing session without creating a new one
+
         HttpSession session = request.getSession(false);
 
-        // Check if session exists and cart is available
-        if (session == null || session.getAttribute("cart") == null) {
+        // ── BADGE COUNT ENDPOINT ──
+        if ("count".equals(request.getParameter("action"))) {
+            int count = 0;
+            if (session != null && session.getAttribute("cart") != null) {
+                ArrayList<String[]> cartItems =
+                        (ArrayList<String[]>) session.getAttribute("cart");
+                for (String[] item : cartItems) {
+                    count += Integer.parseInt(item[3]); // sum all quantities
+                }
+            }
+            response.setContentType("application/json");
+            response.getWriter().write("{\"count\":" + count + "}");
+            return;
+        }
 
-            // If no cart exists, send an empty list to JSP
+        // ── LOAD CART PAGE ──
+        if (session == null || session.getAttribute("cart") == null) {
             request.setAttribute("cart", new ArrayList<>());
         } else {
-            // If cart exists in session, pass it to JSP
             request.setAttribute("cart", session.getAttribute("cart"));
         }
-        // Forward request to cart.jsp page for display
         request.getRequestDispatcher("/WEB-INF/views/customer/cart.jsp")
                 .forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // ================= LOGIN CHECK =================
+
+        // ── LOGIN CHECK ──
         HttpSession session = request.getSession(false);
-
-        // if session is null OR user not logged in
         if (session == null || session.getAttribute("user") == null) {
-
-            // redirect to login page with message
             response.sendRedirect(request.getContextPath() + "/login?message=login_required");
             return;
         }
 
-        // ================= GET FORM DATA =================
-        String name = request.getParameter("name");
-        String price = request.getParameter("price");
-        String image = request.getParameter("image");
+        String action = request.getParameter("action");
+        String name   = request.getParameter("name");
 
-        // get existing session (safe because user is logged in)
-        HttpSession userSession = request.getSession();
-
-        // get cart
         ArrayList<String[]> cart =
-                (ArrayList<String[]>) userSession.getAttribute("cart");
-
+                (ArrayList<String[]>) session.getAttribute("cart");
         if (cart == null) {
             cart = new ArrayList<>();
         }
 
-        //Add item to cart
-        if (name != null && price != null && image != null
-                && !name.isEmpty()
-                && !price.isEmpty()
-                && !image.isEmpty()) {
-            // Item format: {name, price, image, quantity}
-            String[] item = {
-                    name,
-                    price,
-                    image,
-                    "1" // default quantity
-            };
+        // ── ADD ──
+        if (action == null || action.equals("add")) {
+            String price = request.getParameter("price");
+            String image = request.getParameter("image");
 
-            // add item to cart
-            cart.add(item);
+            if (name != null && price != null && image != null
+                    && !name.isEmpty() && !price.isEmpty() && !image.isEmpty()) {
+
+                boolean found = false;
+                for (String[] item : cart) {
+                    if (item[0].equals(name)) {
+                        item[3] = String.valueOf(Integer.parseInt(item[3]) + 1);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    cart.add(new String[]{name, price, image, "1"});
+                }
+            }
+
+            // ── INCREASE ──
+        } else if (action.equals("increase") && name != null) {
+            for (String[] item : cart) {
+                if (item[0].equals(name)) {
+                    item[3] = String.valueOf(Integer.parseInt(item[3]) + 1);
+                    break;
+                }
+            }
+
+            // ── DECREASE ──
+        } else if (action.equals("decrease") && name != null) {
+            for (int i = 0; i < cart.size(); i++) {
+                if (cart.get(i)[0].equals(name)) {
+                    int qty = Integer.parseInt(cart.get(i)[3]) - 1;
+                    if (qty <= 0) {
+                        cart.remove(i);
+                    } else {
+                        cart.get(i)[3] = String.valueOf(qty);
+                    }
+                    break;
+                }
+            }
+
+            // ── DELETE ──
+        } else if (action.equals("delete") && name != null) {
+            cart.removeIf(item -> item[0].equals(name));
         }
 
-        // save back to session
-        userSession.setAttribute("cart", cart);
-
-        // redirect to cart page
+        // ── SAVE & REDIRECT ──
+        session.setAttribute("cart", cart);
         response.sendRedirect(request.getContextPath() + "/cart");
     }
 }
