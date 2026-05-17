@@ -13,14 +13,21 @@
 <div class="main-content">
     <!-- PROFILE HEADER -->
     <div class="profile-header-card">
-        <div class="profile-avatar"></div>
+        <div style="width:72px; height:72px; border-radius:50%;
+            background:#FF7A00FF; flex-shrink:0;
+            display:flex; align-items:center;
+            justify-content:center; font-size:24px; font-weight:bold; color:white;">
+            ${sessionScope.user.substring(0,1).toUpperCase()}
+        </div>
+
         <div>
             <div class="ph-name">
-                Arjun Karki
-                <span class="tag tag-orange">⭐ Gold Member</span>
+                ${user.fullName}
+                <span class="tag tag-orange">${user.role}</span>
             </div>
-            <div class="ph-email">arjun.karki@example.com</div>
-            <div class="ph-since">Member since October 2022 • Kathmandu, NP</div>
+            <div class="ph-email">
+                ${user.email}</div>
+
         </div>
         <div class="ph-edit">
             <a href="${ctx}/editProfile" class="btn btn-primary">✏️ &nbsp;Edit Profile</a>
@@ -33,8 +40,13 @@
             <!-- ADDRESSES -->
             <div class="addresses-card">
                 <div class="ac-header">
-                    <span class="ac-title">📍 Saved Addresses</span>
+                    <span class="ac-title">📍Saved Addresses </span>
                     <button class="btn btn-outline" style="font-size:.78rem;padding:6px 12px">Add New</button>
+                </div>
+                <div class="addr-grid">
+                    <div class="addr-card">
+                        <div class="addr-text"> ${user.address}</div>
+                    </div>
                 </div>
             </div>
 
@@ -73,16 +85,19 @@
             <!-- LOYALTY -->
             <div class="loyalty-card">
                 <div class="loyalty-title">⭐ Loyalty Status</div>
-
                 <div class="loyalty-sub">Earn 1 cup for every order over NPR 500.</div>
             </div>
 
             <!-- MISC LINKS -->
             <div class="misc-links">
-                <div class="misc-link-item" onclick="location.href='feedback.html'">Give us Feedback <span>›</span></div>
-                <div class="misc-link-item">Privacy Preferences <span>›</span></div>
+                <a href="${ctx}/dashboard" class="misc-link-item">
+                    Dashboard<span>›</span>
+                </a>
+                <a href="${ctx}/feedback" class="misc-link-item">
+                    Give us Feedback<span>›</span>
+                </a>
                 <a href="${ctx}/logout" class="misc-link-item logout">
-                    Logout 🔴 <span></span>
+                    Logout 🔴 <span>›</span>
                 </a>
             </div>
         </div>

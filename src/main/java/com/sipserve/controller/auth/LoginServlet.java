@@ -2,6 +2,7 @@ package com.sipserve.controller.auth;
 
 import java.io.IOException;
 
+import com.sipserve.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -30,14 +31,11 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String loginType = request.getParameter("loginType");
 
+
         UserDAO dao = new UserDAO();
-
         String role = dao.validateLogin(email, password, loginType);
-
         if (role != null) {
-
             HttpSession session = request.getSession();
-
             String fullname = dao.getUserNameByEmail(email);
 
             // STORE IN SESSION
@@ -45,29 +43,13 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("role", role);
 
-            // ADMIN LOGIN
-            if ("ADMIN".equalsIgnoreCase(role)) {
 
-                response.sendRedirect(
-                        request.getContextPath() + "/adminDashboard"
-                );
-
+            if ("ADMIN".equalsIgnoreCase(role)) {response.sendRedirect(request.getContextPath() + "/adminDashboard");
             }
-            // CUSTOMER LOGIN
-            else {
-
-                response.sendRedirect(
-                        request.getContextPath() + "/dashboard"
-                );
+            else {response.sendRedirect(request.getContextPath() + "/dashboard");
             }
-
-        } else {
-
-            request.setAttribute(
-                    "error",
-                    "Invalid email or password"
+        } else {request.setAttribute("error", "Invalid email or password"
             );
-
             request.getRequestDispatcher(
                     "/WEB-INF/views/auth/login.jsp"
             ).forward(request, response);

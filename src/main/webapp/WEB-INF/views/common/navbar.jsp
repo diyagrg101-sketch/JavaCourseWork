@@ -38,7 +38,7 @@
                     <a href="${ctx}/login" class="btn-link">Login</a>
 
                     <a href="${ctx}/register"
-                       class="btn btn-primary">
+                       class="btn btn-primary" style="background:var(--orange);color:#fff;padding:13px 22px;">
                         Sign Up
                     </a>
                 </c:if>

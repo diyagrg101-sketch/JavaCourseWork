@@ -76,10 +76,12 @@
 
                 <!-- SESSION INFO -->
                 <div class="cp-session-info">
-                    <div class="cp-session-avatar">AK</div>
+                    <div class="cp-session-avatar">
+                        ${sessionScope.user.substring(0,1)}
+                    </div>
                     <div>
-                        <div class="cp-session-name">Arjun Karki</div>
-                        <div class="cp-session-email">arjun.karki@example.com</div>
+                        <div class="cp-session-name">${sessionScope.user}</div>
+                        <div class="cp-session-email">${sessionScope.email}</div>
                     </div>
                     <div class="cp-session-badge">🟢 Active</div>
                 </div>
@@ -99,7 +101,7 @@
                 <% } %>
 
                 <!-- FORM -->
-                <form action="ChangePasswordServlet" method="POST" id="cpForm" novalidate>
+                <form action="${ctx}/changePassword" method="POST" id="cpForm" novalidate>
                     <!-- CURRENT PASSWORD -->
                     <div class="cp-form-group">
                         <label class="cp-label" for="currentPassword">

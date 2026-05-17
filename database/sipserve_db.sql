@@ -12,6 +12,8 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+ALTER TABLE users
+    ADD address VARCHAR(255);
 
 CREATE TABLE categories (
     id          INT AUTO_INCREMENT PRIMARY KEY,
