@@ -43,7 +43,7 @@
 
     <div class="sort-dropdown">
         <select class="sort-btn" id="sortCategory">
-            <option value="all">⚙️ Sort By</option>
+            <option value="all">⚙️ All</option>
             <option value="snacks">Snacks</option>
             <option value="desserts">Desserts</option>
             <option value="drinks">Drinks</option>
@@ -434,25 +434,40 @@
 
 <script>
     const sortDropdown = document.getElementById("sortCategory");
+    const searchInput = document.querySelector(".search-box input");
     const cards = document.querySelectorAll(".menu-full-card");
 
-    sortDropdown.addEventListener("change", function () {
-
-        const selected = this.value;
+    function filterCards() {
+        const selectedCategory = sortDropdown.value.toLowerCase();
+        const searchText = searchInput.value.toLowerCase();
 
         cards.forEach(card => {
 
-            const category = card.getAttribute("data-category");
+            const category = card.getAttribute("data-category").toLowerCase();
+            const name = card.querySelector(".menu-full-name").innerText.toLowerCase();
+            const desc = card.querySelector(".menu-full-desc").innerText.toLowerCase();
 
-            if (selected === "all" || category === selected) {
+            const matchesCategory =
+                selectedCategory === "all" || category === selectedCategory;
+
+            const matchesSearch =
+                name.includes(searchText) || desc.includes(searchText);
+
+            if (matchesCategory && matchesSearch) {
                 card.style.display = "flex";
             } else {
                 card.style.display = "none";
             }
-
         });
-    });
+    }
+
+    // category filter
+    sortDropdown.addEventListener("change", filterCards);
+
+    // live search filter
+    searchInput.addEventListener("input", filterCards);
 </script>
+
 
 </body>
 </html>
