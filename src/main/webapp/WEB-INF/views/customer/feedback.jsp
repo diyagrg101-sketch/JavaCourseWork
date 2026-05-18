@@ -12,8 +12,8 @@
 
 
 <div class="feedback-page">
-    <a href="${ctx}/dashboard" class="go-dashboard-btn">
-        ← Go to Dashboard
+    <a href="${ctx}/profile" class="go-dashboard-btn">
+        ← Go to Profile
     </a>
     <!-- HEADER -->
 

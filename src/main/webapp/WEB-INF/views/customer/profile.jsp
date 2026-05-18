@@ -89,6 +89,9 @@
 
             <!-- MISC LINKS -->
             <div class="misc-links">
+                <a href="${ctx}/orderConfirmation" class="misc-link-item">
+                    Order Confirmation<span>›</span>
+                </a>
                 <a href="${ctx}/feedback" class="misc-link-item">
                     Give us Feedback<span>›</span>
                 </a>

@@ -81,8 +81,12 @@ public class ChangePasswordServlet extends HttpServlet {
         if(updated) {
 
             session.setAttribute(
-                    "cp_success",
-                    "Password updated successfully."
+                    "pw_success",
+                    "Password changed successfully!"
+            );
+
+            response.sendRedirect(
+                    request.getContextPath() + "/editProfile"
             );
 
         } else {
@@ -91,10 +95,11 @@ public class ChangePasswordServlet extends HttpServlet {
                     "cp_error",
                     "Failed to update password."
             );
+
+            response.sendRedirect(
+                    request.getContextPath() + "/changePassword"
+            );
         }
 
-        response.sendRedirect(
-                request.getContextPath() + "/changePassword"
-        );
     }
 }

@@ -46,31 +46,31 @@
         </div>
 
         <!-- PERSONAL INFO -->
-            <div class="cs-header">
-                <div class="cs-header-left">
-                    <div class="cs-icon">👤</div>
+        <div class="cs-header">
+            <div class="cs-header-left">
+                <div class="cs-icon">👤</div>
 
-                    <div>
-                        <div class="cs-title">Personal Information</div>
-                        <div class="cs-sub">
-                            How you appear to the community and staff.
-                        </div>
+                <div>
+                    <div class="cs-title">Personal Information</div>
+                    <div class="cs-sub">
+                        How you appear to the community and staff.
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="input-row">
+        <div class="input-row">
 
-                <!-- FULL NAME -->
-                <div class="form-group">
-                    <label>Full Name</label>
+            <!-- FULL NAME -->
+            <div class="form-group">
+                <label>Full Name</label>
 
-                    <input class="form-control"
-                           name="fullName"
-                           value="${user.fullName}"/>
-                </div>
-
+                <input class="form-control"
+                       name="fullName"
+                       value="${user.fullName}"/>
             </div>
+
+        </div>
 
         <!-- CONTACT DETAILS -->
         <div class="checkout-section" style="margin-bottom:14px">
@@ -230,8 +230,85 @@
             </button>
         </div>
     </div>
-    </div>
 </form>
+<%
+    String successMsg =
+            (String) session.getAttribute("pw_success");
 
+    if(successMsg != null){
+        session.removeAttribute("pw_success");
+%>
+
+<div id="successPopup" style="
+position:fixed;
+top:24px;
+right:24px;
+background:linear-gradient(135deg,#8B5E3C,#C08B5C);
+color:#fff;
+padding:15px 22px;
+border-radius:16px;
+font-weight:600;
+font-size:.92rem;
+letter-spacing:.2px;
+box-shadow:0 12px 30px rgba(91,58,41,.28);
+border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(8px);
+z-index:9999;
+display:flex;
+align-items:center;
+gap:10px;
+animation:slideIn .45s ease;
+">
+    <span style="
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:.82rem;
+    ">
+        ✓
+    </span>
+
+    Password changed successfully!
+</div>
+
+<style>
+    @keyframes slideIn{
+        from{
+            opacity:0;
+            transform:translateX(100px);
+        }
+        to{
+            opacity:1;
+            transform:translateX(0);
+        }
+    }
+</style>
+
+<script>
+    setTimeout(() => {
+
+        const popup =
+            document.getElementById("successPopup");
+
+        if(popup){
+
+            popup.style.transition = ".4s";
+            popup.style.opacity = "0";
+
+            setTimeout(() => {
+                popup.remove();
+            }, 400);
+        }
+
+    }, 3000);
+</script>
+
+<%
+    }
+%>
 </body>
 </html>

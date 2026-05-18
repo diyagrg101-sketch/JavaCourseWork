@@ -256,10 +256,10 @@
             ↗
         </button>
 
-        <a href="${ctx}/dashboard"
+        <a href="${ctx}/profile"
            class="btn btn-outline">
 
-            ‹ Dashboard
+            ‹ Profile
 
         </a>
     </div>

@@ -90,23 +90,47 @@
     <div class="team-grid">
 
         <div class="team-member">
-            <div class="team-avatar"></div>
+
+            <div class="team-avatar">
+                <img src="${ctx}/assets/images/Member%201.jpg"
+                     alt="Diya Gurung">
+            </div>
+
             <p>Diya Gurung</p>
+
         </div>
 
         <div class="team-member">
-            <div class="team-avatar"></div>
+
+            <div class="team-avatar">
+                <img src="${ctx}/assets/images/Member%202.jpg"
+                     alt="Rachana Thapa">
+            </div>
+
             <p>Rachana Thapa</p>
+
         </div>
 
         <div class="team-member">
-            <div class="team-avatar"></div>
+
+            <div class="team-avatar">
+                <img src="${ctx}/assets/images/Member%203.jpg"
+                     alt="Resma Majhi">
+            </div>
+
             <p>Resma Majhi</p>
+
         </div>
 
         <div class="team-member">
-            <div class="team-avatar"></div>
+
+            <div class="team-avatar">
+                <img src="${ctx}/assets/images/Member%204.jpg"
+                     alt="Aayushika Bataju">
+            </div>
+
             <p>Aayushika Bataju</p>
+
         </div>
 
     </div>

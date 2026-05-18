@@ -62,7 +62,7 @@
             </a>
 
             <button class="btn-stay">
-                <a href="${ctx}/dashboard">
+                <a href="${ctx}/profile">
                     ← Stay Signed In
                 </a>
             </button>
