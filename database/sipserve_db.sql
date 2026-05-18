@@ -12,6 +12,14 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+INSERT INTO users(full_name,email,password,role)
+VALUES(
+          'Admin',
+          'admin@sipandserve.com',
+          'admin123',
+          'ADMIN'
+      );
+
 ALTER TABLE users
     ADD address VARCHAR(255);
 
@@ -55,3 +63,56 @@ INSERT INTO products (name, description, price, rating, image_url, category_id, 
     ('Jam Toast',                'Crisp toast served with house-made fruit jam.',                                               150.00, 4.2, 'jam-toast.jpg',      3, 0);
 
 
+CREATE TABLE cart (
+                      id         INT AUTO_INCREMENT PRIMARY KEY,
+                      user_id    INT NOT NULL,
+                      product_id INT NOT NULL,
+                      quantity   INT DEFAULT 1,
+                      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                      FOREIGN KEY (user_id)    REFERENCES users(id)    ON DELETE CASCADE,
+                      FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+                      UNIQUE KEY unique_cart_item (user_id, product_id)
+);
+CREATE TABLE orders (
+                        id           INT AUTO_INCREMENT PRIMARY KEY,
+                        user_id      INT            NOT NULL,
+                        total_amount DECIMAL(10,2)  NOT NULL DEFAULT 0.00,
+                        status       ENUM('PREPARING','READY','DELIVERED','CANCELLED') DEFAULT 'PREPARING',
+                        created_at   TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+                        updated_at   TIMESTAMP      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE order_items (
+                             id         INT AUTO_INCREMENT PRIMARY KEY,
+                             order_id   INT            NOT NULL,
+                             product_id INT            NOT NULL,
+                             quantity   INT            NOT NULL DEFAULT 1,
+                             unit_price DECIMAL(10,2)  NOT NULL,
+                             created_at TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+                             FOREIGN KEY (order_id)   REFERENCES orders(id)   ON DELETE CASCADE,
+                             FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE payments (
+                          id         INT AUTO_INCREMENT PRIMARY KEY,
+                          order_id   INT            NOT NULL UNIQUE,
+                          amount     DECIMAL(10,2)  NOT NULL,
+                          status     ENUM('PENDING','COMPLETED','FAILED','REFUNDED') DEFAULT 'PENDING',
+                          method     ENUM('CASH','CARD','ONLINE')                    DEFAULT 'CASH',
+                          paid_at    TIMESTAMP      NULL,
+                          created_at TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+                          FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE feedback (
+                          id         INT AUTO_INCREMENT PRIMARY KEY,
+                          user_id    INT     NOT NULL,
+                          product_id INT     NOT NULL,
+                          rating     TINYINT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+                          review     TEXT,
+                          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                          FOREIGN KEY (user_id)    REFERENCES users(id)    ON DELETE CASCADE,
+                          FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+                          UNIQUE KEY unique_feedback (user_id, product_id)
+) ENGINE=InnoDB;
