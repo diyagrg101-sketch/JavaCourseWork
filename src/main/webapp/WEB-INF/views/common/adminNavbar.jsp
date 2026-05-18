@@ -32,7 +32,7 @@
                 <span class="cart-count">0</span>
             </a>
 
-            <a href="${ctx}/dashboard" class="user-profile-nav">
+            <a href="${ctx}/profile" class="user-profile-nav">
 
                 <div class="profile-circle">
                         ${sessionScope.user.substring(0,1).toUpperCase()}
