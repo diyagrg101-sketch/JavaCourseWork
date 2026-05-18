@@ -116,3 +116,15 @@ CREATE TABLE feedback (
                           FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
                           UNIQUE KEY unique_feedback (user_id, product_id)
 ) ENGINE=InnoDB;
+
+INSERT INTO products (name, description, price, rating, image_url, category_id, is_signature) VALUES
+                                                                                                  ('Masala Tea',         'Milk tea with cardamom, ginger, and cloves.',              180.00, 4.5, 'masala chai.jpg',          4, 0),
+                                                                                                  ('Hazelnut Cappuccino','Espresso with steamed milk and premium hazelnut syrup.',   450.00, 4.7, 'hazelhut.jpg',             1, 1),
+                                                                                                  ('Cheesecake',         'Creamy tangy dessert on a buttery biscuit crust.',         250.00, 4.6, 'cheesecake.jpg',           2, 0),
+                                                                                                  ('Blueberry Cheesecake','Creamy cheesecake with fresh local blueberry.',           650.00, 4.8, 'blueberryCheesecake.jpg',  2, 1),
+                                                                                                  ('Avocado Toast',      'Sourdough, mashed avocado, poached egg, chili flakes.',    400.00, 4.5, 'avocadoTaost.jpg',         3, 0),
+                                                                                                  ('Sizzler Brownie',    'Hot fudgy brownie served with vanilla ice cream.',         350.00, 4.7, 'sizzling-brownie.jpg',     2, 1),
+                                                                                                  ('Apple Pie',          'Classic spiced apple filling in a flaky crust.',           220.00, 4.4, 'apple-pie.jpg',            2, 0),
+                                                                                                  ('Peri Peri Fries',    'Crispy fries tossed in spicy peri-peri seasoning.',        180.00, 4.3, 'Peri-Peri-Fries.png',      3, 0),
+                                                                                                  ('Chicken Puff Pastry','Flaky puff pastry filled with seasoned minced chicken.',   120.00, 4.2, 'chicken-puff.jpg',         3, 0),
+                                                                                                  ('Paneer Tikka Wrap',  'Smoky, spiced paneer in a wrap.',                          300.00, 4.4, 'paneer tikka.jpg',         3, 0);

@@ -69,7 +69,17 @@
                 <span class="menu-full-price">NRs 250</span>
             </div>
             <p class="menu-full-desc">A sweet, blended iced coffee with caramel.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=1" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Caramel Macchiato Frappe">
                 <input type="hidden" name="price" value="250">
@@ -90,7 +100,17 @@
                 <span class="menu-full-price">NRs 200</span>
             </div>
             <p class="menu-full-desc">Moist dessert made with cocoa.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=2" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Chocolate Cake">
                 <input type="hidden" name="price" value="200">
@@ -111,7 +131,17 @@
                 <span class="menu-full-price">NRs 200</span>
             </div>
             <p class="menu-full-desc">Freshly prepared sandwich.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=3" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Sandwich">
                 <input type="hidden" name="price" value="200">
@@ -132,74 +162,21 @@
                 <span class="menu-full-price">NRs 350</span>
             </div>
             <p class="menu-full-desc">Smooth espresso with milk.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=4" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Latte">
                 <input type="hidden" name="price" value="350">
                 <input type="hidden" name="image" value="latte.jpg">
-
-                <button type="submit" class="btn-cart">
-                    Add to Cart +
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class="menu-full-card" data-category="snacks">
-        <img class="menu-card-img" src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
-        <div class="menu-full-info">
-            <div class="menu-full-top">
-                <span class="menu-full-name">Jam Toast</span>
-                <span class="menu-full-price">NRs 200</span>
-            </div>
-            <p class="menu-full-desc">Simple snack of toasted bread with sweet fruit jam.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
-            <form action="${ctx}/cart" method="post">
-                <input type="hidden" name="name" value="Jam Toast">
-                <input type="hidden" name="price" value="200">
-                <input type="hidden" name="image" value="jam-toast.jpg">
-
-                <button type="submit" class="btn-cart">
-                    Add to Cart +
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class="menu-full-card" data-category="drinks">
-        <img class="menu-card-img" src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
-        <div class="menu-full-info">
-            <div class="menu-full-top">
-                <span class="menu-full-name">Milk Tea</span>
-                <span class="menu-full-price">NRs 150</span>
-            </div>
-            <p class="menu-full-desc">Refreshing tea with milk.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
-            <form action="${ctx}/cart" method="post">
-                <input type="hidden" name="name" value="Milk Tea">
-                <input type="hidden" name="price" value="150">
-                <input type="hidden" name="image" value="milktea.jpg">
-
-                <button type="submit" class="btn-cart">
-                    Add to Cart +
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class="menu-full-card" data-category="drinks">
-        <img class="menu-card-img" src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
-        <div class="menu-full-info">
-            <div class="menu-full-top">
-                <span class="menu-full-name">Masala Tea</span>
-                <span class="menu-full-price">NRs 180</span>
-            </div>
-            <p class="menu-full-desc">Milk tea with spices like cardamom, ginger, and cloves.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
-            <form action="${ctx}/cart" method="post">
-                <input type="hidden" name="name" value="Masala Tea">
-                <input type="hidden" name="price" value="180">
-                <input type="hidden" name="image" value="masala chai.jpg">
 
                 <button type="submit" class="btn-cart">
                     Add to Cart +
@@ -216,7 +193,17 @@
                 <span class="menu-full-price">NRs 200</span>
             </div>
             <p class="menu-full-desc">Rich, fudgy chocolate dessert.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=5" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Brownie">
                 <input type="hidden" name="price" value="200">
@@ -237,7 +224,17 @@
                 <span class="menu-full-price">NRs 290</span>
             </div>
             <p class="menu-full-desc">Smooth and earthy Japanese green tea.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=6" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Matcha Tea">
                 <input type="hidden" name="price" value="290">
@@ -250,19 +247,91 @@
         </div>
     </div>
 
-    <div class="menu-full-card" data-category="snacks">
-        <img class="menu-card-img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/milktea.jpg" alt="Milk Tea"/>
         <div class="menu-full-info">
             <div class="menu-full-top">
-                <span class="menu-full-name">Paneer Tikka Wrap</span>
-                <span class="menu-full-price">NRs 300</span>
+                <span class="menu-full-name">Milk Tea</span>
+                <span class="menu-full-price">NRs 150</span>
             </div>
-            <p class="menu-full-desc">Paneer Tikka Wrap is a smoky, spiced paneer roll.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <p class="menu-full-desc">Refreshing tea with milk.</p>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=7" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
-                <input type="hidden" name="name" value="Paneer Tikka Wrap">
-                <input type="hidden" name="price" value="300">
-                <input type="hidden" name="image" value="paneer tikka.jpg">
+                <input type="hidden" name="name" value="Milk Tea">
+                <input type="hidden" name="price" value="150">
+                <input type="hidden" name="image" value="milktea.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/jam-toast.jpg" alt="Jam Toast"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Jam Toast</span>
+                <span class="menu-full-price">NRs 200</span>
+            </div>
+            <p class="menu-full-desc">Simple snack of toasted bread with sweet fruit jam.</p>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=8" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Jam Toast">
+                <input type="hidden" name="price" value="200">
+                <input type="hidden" name="image" value="jam-toast.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="drinks">
+        <img class="menu-card-img" src="${ctx}/assets/images/masala chai.jpg" alt="Masala Tea"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Masala Tea</span>
+                <span class="menu-full-price">NRs 180</span>
+            </div>
+            <p class="menu-full-desc">Milk tea with spices like cardamom, ginger, and cloves.</p>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=9" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Masala Tea">
+                <input type="hidden" name="price" value="180">
+                <input type="hidden" name="image" value="masala chai.jpg">
 
                 <button type="submit" class="btn-cart">
                     Add to Cart +
@@ -279,7 +348,17 @@
                 <span class="menu-full-price">NRs 450</span>
             </div>
             <p class="menu-full-desc">Rich espresso blended with silky steamed milk and a hint of premium hazelnut syrup.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=10" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Hazelnut Cappuccino">
                 <input type="hidden" name="price" value="450">
@@ -300,7 +379,17 @@
                 <span class="menu-full-price">NRs 250</span>
             </div>
             <p class="menu-full-desc">Cheesecake is a creamy, tangy dessert layered on a buttery biscuit crust.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=11" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Cheesecake">
                 <input type="hidden" name="price" value="250">
@@ -320,7 +409,17 @@
                 <span class="menu-full-price">NRs 650</span>
             </div>
             <p class="menu-full-desc">Rich creamy cheesecake with fresh local blueberry.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=12" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Blueberry Cheesecake">
                 <input type="hidden" name="price" value="650">
@@ -342,7 +441,17 @@
                 <span class="menu-full-price">NRs 400</span>
             </div>
             <p class="menu-full-desc">Sourdough bread, mashed avocado, poached egg, and chili flakes.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=13" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Avocado Toast">
                 <input type="hidden" name="price" value="400">
@@ -363,7 +472,17 @@
                 <span class="menu-full-price">NRs 350</span>
             </div>
             <p class="menu-full-desc">Hot fudgy brownie served with a scoop of vanilla ice cream.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=14" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Sizzler Brownie">
                 <input type="hidden" name="price" value="350">
@@ -381,7 +500,17 @@
                 <span class="menu-full-price">NRs 220</span>
             </div>
             <p class="menu-full-desc">Classic spiced apple filling in a flaky crust, served warm.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=15" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Warm Apple Pie">
                 <input type="hidden" name="price" value="220">
@@ -399,7 +528,17 @@
                 <span class="menu-full-price">NRs 180</span>
             </div>
             <p class="menu-full-desc">Crispy golden fries tossed in a spicy peri-peri seasoning mix.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=16" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Peri Peri Fries">
                 <input type="hidden" name="price" value="180">
@@ -417,12 +556,53 @@
                 <span class="menu-full-price">NRs 120</span>
             </div>
             <p class="menu-full-desc">Flaky, golden puff pastry filled with seasoned minced chicken.</p>
-            <div class="freshly-label">ℹ️ Freshly Made</div>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=17" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
             <form action="${ctx}/cart" method="post">
                 <input type="hidden" name="name" value="Bakery Chicken Puff">
                 <input type="hidden" name="price" value="120">
                 <input type="hidden" name="image" value="chicken-puff.jpg">
                 <button type="submit" class="btn-cart">Add to Cart +</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-full-card" data-category="snacks">
+        <img class="menu-card-img" src="${ctx}/assets/images/paneer tikka.jpg" alt="Paneer Tikka"/>
+        <div class="menu-full-info">
+            <div class="menu-full-top">
+                <span class="menu-full-name">Paneer Tikka Wrap</span>
+                <span class="menu-full-price">NRs 300</span>
+            </div>
+            <p class="menu-full-desc">Paneer Tikka Wrap is a smoky, spiced paneer roll.</p>
+            <div class="menu-product-details">
+
+                <div class="freshly-label">
+                    ℹ️ Freshly Made
+                </div>
+
+                <a href="${ctx}/product-details?id=18" class="view-details-btn">
+                    View Details
+                </a>
+
+            </div>
+            <form action="${ctx}/cart" method="post">
+                <input type="hidden" name="name" value="Paneer Tikka Wrap">
+                <input type="hidden" name="price" value="300">
+                <input type="hidden" name="image" value="paneer tikka.jpg">
+
+                <button type="submit" class="btn-cart">
+                    Add to Cart +
+                </button>
             </form>
         </div>
     </div>

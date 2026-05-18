@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
@@ -10,89 +11,196 @@
 
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 
-
-<a href="${ctx}/dashboard" class="back-link">‹ Back to Menu</a>
+<a href="${ctx}/menu" class="back-link">‹ Back to Menu</a>
 
 <div class="item-layout">
-    <!-- LEFT: IMAGE -->
+
+    <!-- ================= LEFT: IMAGE ================= -->
     <div>
         <div class="item-img-wrap">
-            <img class="item-img" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=700&q=80" alt="Himalayan Arabica Latte"/>
+
+            <%-- Prefer image_data (BLOB) if present, otherwise fall back to image_url --%>
+            <c:choose>
+                <c:when test="${product.imageData != null}">
+                    <img class="item-img"
+                         src="${ctx}/product-image?id=${product.id}"
+                         alt="${product.name}"/>
+                </c:when>
+                <c:otherwise>
+                    <img class="item-img"
+                         src="${ctx}/assets/images/${product.imageUrl}"
+                         alt="${product.name}"/>
+                </c:otherwise>
+            </c:choose>
+
             <div class="item-img-badges">
-                <span class="item-badge">Best Seller</span>
-                <span class="item-badge secondary">Artisanal</span>
+                <c:if test="${product.signature}">
+                    <span class="item-badge">⭐ Signature</span>
+                </c:if>
+                <c:choose>
+                    <c:when test="${product.rating >= 4.7}">
+                        <span class="item-badge secondary">Best Seller</span>
+                    </c:when>
+                    <c:when test="${product.rating >= 4.5}">
+                        <span class="item-badge secondary">Popular</span>
+                    </c:when>
+                </c:choose>
             </div>
-            <div class="item-wish">🤍</div>
+
+            <div class="item-wish" id="wishBtn">🤍</div>
         </div>
+
+        <%-- Star rating display --%>
         <div class="item-meta-row">
-            <div class="item-meta">🌿 TYPE <span>Vegetarian</span></div>
-            <div class="item-meta">🔥 CALORIES <span>180 kcal</span></div>
-            <div class="item-meta">💧 TEMPERATURE <span>Hot Serving</span></div>
+            <div class="item-meta">
+                ⭐ RATING
+                <span><fmt:formatNumber value="${product.rating}" maxFractionDigits="1"/> / 5</span>
+            </div>
+            <div class="item-meta">
+                🏷️ CATEGORY
+                <span>
+                    <c:choose>
+                        <c:when test="${product.categoryId == 1}">Coffee</c:when>
+                        <c:when test="${product.categoryId == 2}">Bakery</c:when>
+                        <c:when test="${product.categoryId == 3}">Snacks</c:when>
+                        <c:when test="${product.categoryId == 4}">Beverage</c:when>
+                        <c:otherwise>Other</c:otherwise>
+                    </c:choose>
+                </span>
+            </div>
+            <div class="item-meta">
+                ℹ️ STATUS
+                <span>${product.active ? 'Available' : 'Unavailable'}</span>
+            </div>
         </div>
     </div>
 
-    <!-- RIGHT: INFO -->
+    <!-- ================= RIGHT: INFO ================= -->
     <div>
-        <div class="item-series">☕ PREMIUM COFFEE SERIES</div>
-        <div class="item-name">Himalayan Arabica Latte</div>
-        <div class="item-price">NPR 425</div>
+        <div class="item-series">${categoryLabel}</div>
+        <div class="item-name">${product.name}</div>
+        <div class="item-price">
+            NPR <fmt:formatNumber value="${product.price}" maxFractionDigits="0"/>
+        </div>
 
         <div class="item-section-label">DESCRIPTION</div>
         <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px">
-            Our signature latte crafted with 100% single-origin Arabica beans sourced from the high altitudes of the Himalayas. Silky smooth steamed milk meets a bold, caramel-noted espresso finish. A warm embrace in every sip.
+            ${product.description}
         </p>
 
-        <div class="item-section-label">INGREDIENTS</div>
-        <div class="ingredient-tags">
-            <span class="ing-tag">Himalayan Arabica Beans</span>
-            <span class="ing-tag">Whole Milk</span>
-            <span class="ing-tag">Natural Cane Sugar</span>
-            <span class="ing-tag">Cinnamon Dust</span>
-        </div>
+        <%-- ── Add to Cart form ── --%>
+        <form action="${ctx}/cart" method="post" id="detailCartForm">
+            <input type="hidden" name="productId" value="${product.id}"/>
+            <input type="hidden" name="name"      value="${product.name}"/>
+            <input type="hidden" name="price"     value="${product.price}"/>
+            <input type="hidden" name="image"     value="${product.imageUrl}"/>
+            <input type="hidden" name="quantity"  id="hiddenQty" value="1"/>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-            <div class="item-section-label" style="margin-bottom:0">SELECT SIZE</div>
-            <span class="size-required">Required</span>
-        </div>
-        <div class="size-row" style="margin-bottom:18px">
-            <div class="size-option"><div class="size-lbl">SMALL</div><div class="size-vol">240ml</div></div>
-            <div class="size-option active"><div class="size-lbl">REGULAR</div><div class="size-vol">350ml</div><div style="font-size:.9rem;margin-top:3px">✓</div></div>
-            <div class="size-option"><div class="size-lbl">LARGE</div><div class="size-vol">480ml</div></div>
-        </div>
+            <div class="total-add-row">
+                <div>
+                    <div class="total-add-label">PRICE</div>
+                    <div class="total-add-amount" id="displayTotal">
+                        NPR <fmt:formatNumber value="${product.price}" maxFractionDigits="0"/>
+                    </div>
+                </div>
 
-        <div class="item-section-label">PERSONALIZE YOUR DRINK</div>
-        <div>
-            <div class="addon-row">
-                <div class="addon-left"><input type="checkbox" class="addon-check"/><span class="addon-name">Extra Espresso Shot</span></div>
-                <span class="addon-price">+ NPR 50</span>
+                <div class="qty-row">
+                    <button type="button" class="qty-btn" id="qtyMinus">−</button>
+                    <span class="qty-val" id="qtyDisplay">1</span>
+                    <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
             </div>
-            <div class="addon-row">
-                <div class="addon-left"><input type="checkbox" class="addon-check"/><span class="addon-name">Swap for Oat Milk</span></div>
-                <span class="addon-price">+ NPR 80</span>
-            </div>
-            <div class="addon-row">
-                <div class="addon-left"><input type="checkbox" class="addon-check"/><span class="addon-name">Caramel Drizzle</span></div>
-                <span class="addon-price">+ NPR 30</span>
-            </div>
-        </div>
 
-        <div class="total-add-row">
-            <div>
-                <div class="total-add-label">TOTAL AMOUNT</div>
-                <div class="total-add-amount">NPR 465</div>
-            </div>
-            <div class="qty-row">
-                <button class="qty-btn">−</button>
-                <span class="qty-val">1</span>
-                <button class="qty-btn">+</button>
-            </div>
-        </div>
-
-        <button class="btn btn-primary btn-full btn-lg">🛒 &nbsp;Add to Cart</button>
+            <c:choose>
+                <c:when test="${product.active}">
+                    <button type="submit" class="btn btn-primary btn-full btn-lg">
+                        🛒 &nbsp;Add to Cart
+                    </button>
+                </c:when>
+                <c:otherwise>
+                    <button type="button" class="btn btn-primary btn-full btn-lg" disabled
+                            style="opacity:.5;cursor:not-allowed;">
+                        Currently Unavailable
+                    </button>
+                </c:otherwise>
+            </c:choose>
+        </form>
     </div>
 </div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
+<script>
+    const basePrice = ${product.price};
+    let qty = 1;
+
+    const qtyDisplay  = document.getElementById("qtyDisplay");
+    const hiddenQty   = document.getElementById("hiddenQty");
+    const displayTotal = document.getElementById("displayTotal");
+
+    function updateDisplay() {
+        qtyDisplay.textContent   = qty;
+        hiddenQty.value          = qty;
+        displayTotal.textContent = "NPR " + (basePrice * qty).toLocaleString("en-NP");
+    }
+
+    document.getElementById("qtyPlus").addEventListener("click", () => {
+        if (qty < 10) { qty++; updateDisplay(); }
+    });
+
+    document.getElementById("qtyMinus").addEventListener("click", () => {
+        if (qty > 1) { qty--; updateDisplay(); }
+    });
+
+    // ── AJAX add to cart (stay on page, show toast) ──
+    const ctx = "${ctx}";
+
+    document.getElementById("detailCartForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const itemName = formData.get("name");
+
+        fetch(ctx + "/cart", {
+            method: "POST",
+            body: new URLSearchParams(formData),
+            credentials: "same-origin"
+        }).then(r => {
+            if (r.ok || r.redirected) {
+                updateNavBadge();
+                showToast(itemName);
+            }
+        }).catch(() => showToast(itemName));
+    });
+
+    function updateNavBadge() {
+        fetch(ctx + "/cart?action=count", { credentials: "same-origin" })
+            .then(r => r.json())
+            .then(data => {
+                const badge = document.getElementById("cart-badge");
+                if (badge) badge.textContent = data.count;
+            });
+    }
+
+    function showToast(itemName) {
+        let toast = document.getElementById("cart-toast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "cart-toast";
+            toast.style.cssText = `
+                position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+                background:#222; color:#fff; padding:12px 24px; border-radius:24px;
+                font-size:.9rem; display:flex; align-items:center; gap:10px;
+                box-shadow:0 4px 18px rgba(0,0,0,.18); z-index:9999;
+                opacity:0; transition:opacity .3s; white-space:nowrap;
+            `;
+            document.body.appendChild(toast);
+        }
+        toast.innerHTML = "✅ <strong>" + itemName + "</strong> added to cart";
+        toast.style.opacity = "1";
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => { toast.style.opacity = "0"; }, 2500);
+    }
+</script>
 
 </body>
 </html>
