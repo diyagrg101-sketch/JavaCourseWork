@@ -55,7 +55,9 @@
         <!-- ACTIONS -->
         <div class="logout-actions">
 
-            <a href="${ctx}/home" class="btn-logout-confirm">
+            <a href="${ctx}/logout?action=confirm"
+               class="btn-logout-confirm">
+
                 🚪 Sign Me Out
             </a>
 
