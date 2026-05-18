@@ -195,10 +195,6 @@
                     <span style="font-size:1rem">🔒</span>
 
                     <div>
-                        <div style="font-size:.84rem;font-weight:600">
-                            Password was last changed 3 months ago
-                        </div>
-
                         <div style="font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em">
                             Security Score: Good
                         </div>

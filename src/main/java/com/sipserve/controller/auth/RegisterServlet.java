@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 
             // REDIRECT TO DASHBOARD
             response.sendRedirect(
-                    request.getContextPath() + "/dashboard"
+                    request.getContextPath() + "/profile"
             );
 
         } else {

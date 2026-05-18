@@ -89,9 +89,6 @@
 
             <!-- MISC LINKS -->
             <div class="misc-links">
-                <a href="${ctx}/dashboard" class="misc-link-item">
-                    Dashboard<span>›</span>
-                </a>
                 <a href="${ctx}/feedback" class="misc-link-item">
                     Give us Feedback<span>›</span>
                 </a>

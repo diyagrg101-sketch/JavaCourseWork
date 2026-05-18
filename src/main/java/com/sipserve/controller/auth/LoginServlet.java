@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 
             if ("ADMIN".equalsIgnoreCase(role)) {response.sendRedirect(request.getContextPath() + "/adminDashboard");
             }
-            else {response.sendRedirect(request.getContextPath() + "/dashboard");
+            else {response.sendRedirect(request.getContextPath() + "/profile");
             }
         } else {request.setAttribute("error", "Invalid email or password"
             );
