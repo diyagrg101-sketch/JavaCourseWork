@@ -76,12 +76,6 @@
                     errSubtitle = "Our espresso machine has hiccuped. We're on it!";
                     errHint     = "Our team has been notified. Please try again in a moment.";
                     break;
-                case 503:
-                    errIcon     = "🛠️";
-                    errTitle    = "Service Unavailable";
-                    errSubtitle = "We're currently brewing something better. Back soon!";
-                    errHint     = "Sip and Serve is undergoing scheduled maintenance.";
-                    break;
                 default:
                     errIcon     = "😕";
                     errTitle    = "Something Went Wrong";
@@ -115,37 +109,37 @@
 
         <!-- ACTIONS -->
         <div class="err-actions">
-            <a href="index.jsp" class="err-btn-primary">🏠 &nbsp;Go to Home</a>
+            <a href="${ctx}/home" class="err-btn-primary">🏠 &nbsp;Go to Home</a>
             <a href="javascript:history.back()" class="err-btn-outline">← &nbsp;Go Back</a>
-            <a href="menu.jsp" class="err-btn-outline">☕ &nbsp;Browse Menu</a>
+            <a href="${ctx}/menu" class="err-btn-outline">☕ &nbsp;Browse Menu</a>
         </div>
 
         <!-- HELP NOTE -->
         <div class="err-help">
             <span>Still having trouble?</span>
-            <a href="contact.jsp">Contact our support team →</a>
+            <a href="${ctx}/contact">Contact our support team →</a>
         </div>
 
         <!-- SUGGESTIONS -->
         <div class="err-suggestions">
             <div class="err-suggestions-title">You might also like</div>
             <div class="err-suggestion-cards">
-                <a href="menu.jsp" class="err-suggestion-card">
+                <a href="${ctx}/menu" class="err-suggestion-card">
                     <span class="err-sugg-icon">🍽️</span>
                     <div class="err-sugg-name">Our Menu</div>
                     <div class="err-sugg-sub">Browse all items</div>
                 </a>
-                <a href="about.jsp" class="err-suggestion-card">
+                <a href="${ctx}/about" class="err-suggestion-card">
                     <span class="err-sugg-icon">🌿</span>
                     <div class="err-sugg-name">About Us</div>
                     <div class="err-sugg-sub">Our story</div>
                 </a>
-                <a href="contact.jsp" class="err-suggestion-card">
+                <a href="${ctx}/contact" class="err-suggestion-card">
                     <span class="err-sugg-icon">📞</span>
                     <div class="err-sugg-name">Contact Us</div>
                     <div class="err-sugg-sub">Get in touch</div>
                 </a>
-                <a href="login.jsp" class="err-suggestion-card">
+                <a href="${ctx}/login" class="err-suggestion-card">
                     <span class="err-sugg-icon">🔑</span>
                     <div class="err-sugg-name">Sign In</div>
                     <div class="err-sugg-sub">Access your account</div>
@@ -153,9 +147,8 @@
             </div>
         </div>
 
-    </div><!-- /err-container -->
-</div><!-- /err-page -->
-
+    </div>
+</div>
 
 </body>
 </html>
