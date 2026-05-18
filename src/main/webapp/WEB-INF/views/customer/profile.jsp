@@ -41,7 +41,6 @@
             <div class="addresses-card">
                 <div class="ac-header">
                     <span class="ac-title">📍Saved Addresses </span>
-                    <button class="btn btn-outline" style="font-size:.78rem;padding:6px 12px">Add New</button>
                 </div>
                 <div class="addr-grid">
                     <div class="addr-card">
