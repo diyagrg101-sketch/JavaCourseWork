@@ -17,6 +17,7 @@ public class Product {
     private boolean signature;
     private boolean active;
     private LocalDateTime createdAt;
+    private int orderCount;
 
     public Product() { }
 
@@ -55,4 +56,7 @@ public class Product {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public int getOrderCount() { return orderCount; }
+    public void setOrderCount(int orderCount) { this.orderCount = orderCount; }
 }

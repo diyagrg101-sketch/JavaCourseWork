@@ -25,10 +25,20 @@
             </div>
 
             <div class="admin-topbar-right">
-                <div class="admin-search">
+                <form action="${ctx}/manageProduct"
+                      method="get"
+                      class="admin-search"
+                      id="searchForm">
+
                     <span>🔍</span>
-                    <input type="text" placeholder="Search products..."/>
-                </div>
+
+                    <input type="text"
+                           name="search"
+                           id="searchInput"
+                           placeholder="Search products..."
+                           value="${param.search}"
+                           oninput="handleSearch(this.value)" />
+                </form>
 
                 <button class="btn btn-primary" onclick="openModal('addProductModal')">
                     + &nbsp;Add Product
@@ -41,7 +51,7 @@
             <div class="stat-sum-card">
                 <div class="stat-sum-ico">🍽️</div>
                 <div>
-                    <div class="stat-sum-val">42</div>
+                    <div class="stat-sum-val">${totalProducts}</div>
                     <div class="stat-sum-label">Total Products</div>
                     <div class="stat-sum-trend">↗ +3 this week</div>
                 </div>
@@ -50,24 +60,24 @@
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:#e8f5e9">✅</div>
                 <div>
-                    <div class="stat-sum-val">38</div>
-                    <div class="stat-sum-label">Active</div>
+                    <div class="stat-sum-val">${activeCount}</div>
+                    <div class="stat-sum-label">active count</div>
                 </div>
             </div>
 
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:#fff8e1">📦</div>
                 <div>
-                    <div class="stat-sum-val">2</div>
-                    <div class="stat-sum-label">Out of Stock</div>
+                    <div class="stat-sum-val">${outOfStock}</div>
+                    <div class="stat-sum-label">Out of stock</div>
                 </div>
             </div>
 
             <div class="stat-sum-card">
                 <div class="stat-sum-ico" style="background:#f5f5f5">🙈</div>
                 <div>
-                    <div class="stat-sum-val">2</div>
-                    <div class="stat-sum-label">Hidden</div>
+                    <div class="stat-sum-val">${hiddenCount}</div>
+                    <div class="stat-sum-label">Hidden count</div>
                 </div>
             </div>
         </div>
@@ -109,48 +119,58 @@
                 </thead>
 
                 <tbody>
+                <c:forEach var="product" items="${products}">
+                    <tr>
+                        <td><input type="checkbox"/></td>
 
-                <tr>
-                    <td><input type="checkbox"/></td>
-
-                    <td>
-                        <div class="tbl-item-cell">
-                            <img class="tbl-thumb" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=80&q=80"/>
-                            <div>
-                                <div class="tbl-item-name">Hazelnut Cappuccino</div>
-                                <div class="tbl-item-sub">SKU: BEV-001</div>
+                        <td>
+                            <div class="tbl-item-cell">
+                                <img class="tbl-thumb" src="${ctx}/image?id=${product.id}" alt="${product.name}"/>
+                                <div>
+                                    <div class="tbl-item-name">${product.name}</div>
+                                    <div class="tbl-item-sub">ID: ${product.id}</div>
+                                </div>
                             </div>
-                        </div>
-                    </td>
+                        </td>
 
-                    <td>Hot Beverages</td>
-                    <td>NPR 450</td>
-                    <td>In Stock</td>
-                    <td>Active</td>
-                    <td>248</td>
+                        <td>${product.categoryId}</td>
+                        <td>NPR ${product.price}</td>
+                        <td>${product.active ? 'In Stock' : 'Out of Stock'}</td>
+                        <td>
+        <span class="${product.active ? 'badge-active' : 'badge-inactive'}">
+                ${product.active ? 'Active' : 'Inactive'}
+        </span>
+                        </td>
+                        <td>${product.orderCount}</td>
 
-                    <td>
-                        <label class="toggle">
-                            <input type="checkbox" checked/>
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </td>
+                        <td>
+                            <label class="toggle">
+                                <input type="checkbox" ${product.active ? 'checked' : ''}/>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </td>
 
-                    <td>
-                        <div class="tbl-actions">
-                            <button class="tbl-btn" onclick="openModal('editProductModal')">✏️</button>
-                            <button class="tbl-btn">📋</button>
-                            <button class="tbl-btn danger">🗑️</button>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            <div class="tbl-actions">
+                                <button class="tbl-btn" onclick="openModal('editProductModal')">✏️</button>
+                                <button class="tbl-btn">📋</button>
+                                <button class="tbl-btn danger">🗑️</button>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
 
+                <c:if test="${empty products}">
+                    <tr>
+                        <td colspan="9" style="text-align:center; padding: 2rem; color: #999;">
+                            No products found.
+                        </td>
+                    </tr>
+                </c:if>
                 </tbody>
             </table>
 
-            <div class="pagination">
-                <span>Showing 1–6 of 42 products</span>
-            </div>
+
         </div>
     </div>
 </div>
@@ -209,6 +229,29 @@
     }
     function closeModal(id){
         document.getElementById(id).classList.add('hidden');
+    }
+    let timeout = null;
+
+    function handleSearch(value) {
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+
+            // if empty → show full list again
+            if (value.trim() === "") {
+
+                window.location.href =
+                    "${ctx}/manageProduct";
+
+                return;
+            }
+
+            // auto submit while typing
+            document.getElementById("searchForm")
+                .submit();
+
+        }, 300);
     }
 </script>
 

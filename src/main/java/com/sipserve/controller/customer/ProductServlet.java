@@ -105,7 +105,7 @@ public class ProductServlet extends HttpServlet {
 
         req.setAttribute("product", opt.get());
         req.getRequestDispatcher("/WEB-INF/views/customer/product-details.jsp")
-           .forward(req, resp);
+                .forward(req, resp);
     }
 
     /* ---------------- helpers ---------------- */

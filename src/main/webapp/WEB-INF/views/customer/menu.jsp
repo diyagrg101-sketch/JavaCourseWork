@@ -43,7 +43,7 @@
 
     <div class="sort-dropdown">
         <select class="sort-btn" id="sortCategory">
-            <option value="all">⚙️ All</option>
+            <option value="all">⚙️ All menu</option>
             <option value="snacks">Snacks</option>
             <option value="desserts">Desserts</option>
             <option value="drinks">Drinks</option>

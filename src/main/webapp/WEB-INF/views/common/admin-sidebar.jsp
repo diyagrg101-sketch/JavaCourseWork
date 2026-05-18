@@ -11,13 +11,13 @@
     <div class="sidebar-section-label">Main</div>
 
     <a href="${ctx}/adminDashboard"
-       class="${uri.contains('/admin/dashboard') ? 'active' : ''}">
+       class="${uri.contains('adminDashboard') ? 'active' : ''}">
         <span class="sidebar-ico">📊</span>
         Dashboard
     </a>
 
     <a href="${ctx}/manageOrder"
-       class="${uri.contains('/admin/manage-orders') ? 'active' : ''}">
+       class="${uri.contains('manageOrder') ? 'active' : ''}">
         <span class="sidebar-ico">📋</span>
         Manage Orders
     </a>
@@ -26,13 +26,13 @@
     <div class="sidebar-section-label">Catalogue</div>
 
     <a href="${ctx}/manageProduct"
-       class="${uri.contains('/admin/manage-products') ? 'active' : ''}">
+       class="${uri.contains('manageProduct') ? 'active' : ''}">
         <span class="sidebar-ico">🍴</span>
         Manage Products
     </a>
 
     <a href="${ctx}/manageCategories"
-       class="${uri.contains('/admin/manage-categories') ? 'active' : ''}">
+       class="${uri.contains('manageCategories') ? 'active' : ''}">
         <span class="sidebar-ico">🗂️</span>
         Categories
     </a>
@@ -41,7 +41,7 @@
     <div class="sidebar-section-label">People</div>
 
     <a href="${ctx}/manageUser"
-       class="${uri.contains('/admin/manage-users') ? 'active' : ''}">
+       class="${uri.contains('manageUser') ? 'active' : ''}">
         <span class="sidebar-ico">👥</span>
         Manage Users
     </a>
@@ -50,19 +50,17 @@
     <div class="sidebar-section-label">Analytics</div>
 
     <a href="${ctx}/report"
-       class="${uri.contains('/admin/reports') ? 'active' : ''}">
+       class="${uri.contains('report') ? 'active' : ''}">
         <span class="sidebar-ico">📈</span>
         Reports
     </a>
 
     <!-- SIGN OUT -->
     <div class="sidebar-bottom">
-
         <a href="${ctx}/logout" class="signout">
             <span class="sidebar-ico">↩</span>
             Logout
         </a>
-
     </div>
 
 </nav>
