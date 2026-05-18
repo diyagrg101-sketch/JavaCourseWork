@@ -433,39 +433,85 @@
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 <script>
+    const ctx = "${ctx}";
+
+    // ── FILTER & SEARCH ──
     const sortDropdown = document.getElementById("sortCategory");
-    const searchInput = document.querySelector(".search-box input");
-    const cards = document.querySelectorAll(".menu-full-card");
+    const searchInput  = document.querySelector(".search-box input");
+    const cards        = document.querySelectorAll(".menu-full-card");
 
     function filterCards() {
         const selectedCategory = sortDropdown.value.toLowerCase();
         const searchText = searchInput.value.toLowerCase();
-
         cards.forEach(card => {
-
             const category = card.getAttribute("data-category").toLowerCase();
-            const name = card.querySelector(".menu-full-name").innerText.toLowerCase();
-            const desc = card.querySelector(".menu-full-desc").innerText.toLowerCase();
-
-            const matchesCategory =
-                selectedCategory === "all" || category === selectedCategory;
-
-            const matchesSearch =
-                name.includes(searchText) || desc.includes(searchText);
-
-            if (matchesCategory && matchesSearch) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
+            const name     = card.querySelector(".menu-full-name").innerText.toLowerCase();
+            const desc     = card.querySelector(".menu-full-desc").innerText.toLowerCase();
+            const matchesCategory = selectedCategory === "all" || category === selectedCategory;
+            const matchesSearch   = name.includes(searchText) || desc.includes(searchText);
+            card.style.display = (matchesCategory && matchesSearch) ? "flex" : "none";
         });
     }
-
-    // category filter
     sortDropdown.addEventListener("change", filterCards);
-
-    // live search filter
     searchInput.addEventListener("input", filterCards);
+
+    // ── TOAST NOTIFICATION ──
+    function showToast(itemName) {
+        let toast = document.getElementById("cart-toast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "cart-toast";
+            toast.style.cssText = `
+                position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+                background:#222; color:#fff; padding:12px 24px; border-radius:24px;
+                font-size:.9rem; display:flex; align-items:center; gap:10px;
+                box-shadow:0 4px 18px rgba(0,0,0,.18); z-index:9999;
+                opacity:0; transition:opacity .3s; white-space:nowrap;
+            `;
+            document.body.appendChild(toast);
+        }
+        toast.innerHTML = "✅ <strong>" + itemName + "</strong> added to cart";
+        toast.style.opacity = "1";
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => { toast.style.opacity = "0"; }, 2500);
+    }
+
+    // ── UPDATE NAVBAR BADGE ──
+    function updateBadge() {
+        fetch(ctx + "/cart?action=count", { credentials: "same-origin" })
+            .then(r => r.json())
+            .then(data => {
+                const badge = document.getElementById("cart-badge");
+                if (badge) badge.textContent = data.count;
+            })
+            .catch(err => console.error("Badge update failed:", err));
+    }
+
+    // ── AJAX ADD TO CART ──
+    document.querySelectorAll(".menu-full-card form").forEach(form => {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // stay on page
+
+            const formData = new FormData(this);
+            const itemName = formData.get("name");
+
+            fetch(ctx + "/cart", {
+                method: "POST",
+                body: new URLSearchParams(formData),
+                credentials: "same-origin"
+            })
+                .then(response => {
+                    if (response.ok || response.redirected) {
+                        updateBadge();
+                        showToast(itemName);
+                    }
+                })
+                .catch(() => showToast(itemName));
+        });
+    });
+
+    // set correct badge on page load
+    updateBadge();
 </script>
 
 
