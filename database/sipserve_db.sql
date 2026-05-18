@@ -59,7 +59,7 @@ INSERT INTO products (name, description, price, rating, image_url, category_id, 
     ('Latte',                    'Smooth coffee made with espresso and steamed milk.',                                          350.00, 4.9, 'latte.jpg',          1, 1),
     ('Brownie',                  'Rich fudgy chocolate brownie with a crackly top.',                                            180.00, 4.5, 'brownie.jpg',        2, 0),
     ('Matcha Latte',             'Earthy Japanese matcha whisked with steamed milk.',                                           320.00, 4.7, 'matcha.jpg',         1, 0),
-    ('Milk Tea',                 'Creamy Nepali-style milk tea, gently spiced.',                                                120.00, 4.3, 'milktea.jpg',        4, 0),
+    ('Milk Tea',                 'Creamy Nepali-style milk tea, gently spiced.',                                                120.00, 4.3, 'Milktea.jpg',        4, 0),
     ('Jam Toast',                'Crisp toast served with house-made fruit jam.',                                               150.00, 4.2, 'jam-toast.jpg',      3, 0);
 
 
@@ -118,13 +118,13 @@ CREATE TABLE feedback (
 ) ENGINE=InnoDB;
 
 INSERT INTO products (name, description, price, rating, image_url, category_id, is_signature) VALUES
-                                                                                                  ('Masala Tea',         'Milk tea with cardamom, ginger, and cloves.',              180.00, 4.5, 'masala chai.jpg',          4, 0),
-                                                                                                  ('Hazelnut Cappuccino','Espresso with steamed milk and premium hazelnut syrup.',   450.00, 4.7, 'hazelhut.jpg',             1, 1),
-                                                                                                  ('Cheesecake',         'Creamy tangy dessert on a buttery biscuit crust.',         250.00, 4.6, 'cheesecake.jpg',           2, 0),
-                                                                                                  ('Blueberry Cheesecake','Creamy cheesecake with fresh local blueberry.',           650.00, 4.8, 'blueberryCheesecake.jpg',  2, 1),
-                                                                                                  ('Avocado Toast',      'Sourdough, mashed avocado, poached egg, chili flakes.',    400.00, 4.5, 'avocadoTaost.jpg',         3, 0),
-                                                                                                  ('Sizzler Brownie',    'Hot fudgy brownie served with vanilla ice cream.',         350.00, 4.7, 'sizzling-brownie.jpg',     2, 1),
-                                                                                                  ('Apple Pie',          'Classic spiced apple filling in a flaky crust.',           220.00, 4.4, 'apple-pie.jpg',            2, 0),
-                                                                                                  ('Peri Peri Fries',    'Crispy fries tossed in spicy peri-peri seasoning.',        180.00, 4.3, 'Peri-Peri-Fries.png',      3, 0),
-                                                                                                  ('Chicken Puff Pastry','Flaky puff pastry filled with seasoned minced chicken.',   120.00, 4.2, 'chicken-puff.jpg',         3, 0),
-                                                                                                  ('Paneer Tikka Wrap',  'Smoky, spiced paneer in a wrap.',                          300.00, 4.4, 'paneer tikka.jpg',         3, 0);
+    ('Masala Tea',         'Milk tea with cardamom, ginger, and cloves.',              180.00, 4.5, 'masala chai.jpg',          4, 0),
+    ('Hazelnut Cappuccino','Espresso with steamed milk and premium hazelnut syrup.',   450.00, 4.7, 'hazelhut.jpg',             1, 1),
+    ('Cheesecake',         'Creamy tangy dessert on a buttery biscuit crust.',         250.00, 4.6, 'cheesecake.jpg',           2, 0),
+    ('Blueberry Cheesecake','Creamy cheesecake with fresh local blueberry.',           650.00, 4.8, 'blueberryCheesecake.jpg',  2, 1),
+    ('Avocado Toast',      'Sourdough, mashed avocado, poached egg, chili flakes.',    400.00, 4.5, 'avocadoTaost.jpg',         3, 0),
+    ('Sizzler Brownie',    'Hot fudgy brownie served with vanilla ice cream.',         350.00, 4.7, 'sizzling-brownie.jpg',     2, 1),
+    ('Apple Pie',          'Classic spiced apple filling in a flaky crust.',           220.00, 4.4, 'apple-pie.jpg',            2, 0),
+    ('Peri Peri Fries',    'Crispy fries tossed in spicy peri-peri seasoning.',        180.00, 4.3, 'Peri-Peri-Fries.png',      3, 0),
+    ('Chicken Puff Pastry','Flaky puff pastry filled with seasoned minced chicken.',   120.00, 4.2, 'chicken-puff.jpg',         3, 0),
+    ('Paneer Tikka Wrap',  'Smoky, spiced paneer in a wrap.',                          300.00, 4.4, 'paneer tikka.jpg',         3, 0);

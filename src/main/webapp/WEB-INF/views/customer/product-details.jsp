@@ -131,47 +131,75 @@
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 <script>
+    // Product base price from JSP
     const basePrice = ${product.price};
     let qty = 1;
 
-    const qtyDisplay  = document.getElementById("qtyDisplay");
-    const hiddenQty   = document.getElementById("hiddenQty");
+    // DOM elements
+    const qtyDisplay   = document.getElementById("qtyDisplay");
+    const hiddenQty    = document.getElementById("hiddenQty");
     const displayTotal = document.getElementById("displayTotal");
 
+    // Update quantity + total price display
     function updateDisplay() {
-        qtyDisplay.textContent   = qty;
-        hiddenQty.value          = qty;
-        displayTotal.textContent = "NPR " + (basePrice * qty).toLocaleString("en-NP");
+        qtyDisplay.textContent = qty;
+        hiddenQty.value = qty;
+        displayTotal.textContent =
+            "NPR " + (basePrice * qty).toLocaleString("en-NP");
     }
 
+    // Increase quantity (max 10)
     document.getElementById("qtyPlus").addEventListener("click", () => {
         if (qty < 10) { qty++; updateDisplay(); }
     });
 
+    // Decrease quantity (min 1)
     document.getElementById("qtyMinus").addEventListener("click", () => {
         if (qty > 1) { qty--; updateDisplay(); }
     });
 
-    // ── AJAX add to cart (stay on page, show toast) ──
     const ctx = "${ctx}";
 
+    // ✅ Login check (server session based)
+    const isLoggedIn = ${not empty sessionScope.user};
+
+    // Add to cart handler
     document.getElementById("detailCartForm").addEventListener("submit", function (e) {
         e.preventDefault();
+
+        // If user not logged in → redirect to login page
+        if (!isLoggedIn) {
+            window.location.href = ctx + "/login";
+            return;
+        }
+
         const formData = new FormData(this);
         const itemName = formData.get("name");
 
+        // Send AJAX request to cart servlet
         fetch(ctx + "/cart", {
             method: "POST",
             body: new URLSearchParams(formData),
             credentials: "same-origin"
-        }).then(r => {
-            if (r.ok || r.redirected) {
-                updateNavBadge();
-                showToast(itemName);
-            }
-        }).catch(() => showToast(itemName));
+        })
+            .then(r => {
+
+                // If backend blocks (extra safety)
+                if (r.status === 401) {
+                    window.location.href = ctx + "/login";
+                    return;
+                }
+
+                // Success → update badge + show toast
+                if (r.ok || r.redirected) {
+                    updateNavBadge();
+                    showToast(itemName);
+                }
+            })
+            .catch(() => showToast(itemName));
     });
 
+    // Update cart badge count in navbar
     function updateNavBadge() {
         fetch(ctx + "/cart?action=count", { credentials: "same-origin" })
             .then(r => r.json())
@@ -181,24 +209,47 @@
             });
     }
 
+    // Toast message when item added
     function showToast(itemName) {
         let toast = document.getElementById("cart-toast");
+
+        // Create toast if not exists
         if (!toast) {
             toast = document.createElement("div");
             toast.id = "cart-toast";
+
             toast.style.cssText = `
-                position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
-                background:#222; color:#fff; padding:12px 24px; border-radius:24px;
-                font-size:.9rem; display:flex; align-items:center; gap:10px;
-                box-shadow:0 4px 18px rgba(0,0,0,.18); z-index:9999;
-                opacity:0; transition:opacity .3s; white-space:nowrap;
+                position:fixed;
+                bottom:28px;
+                left:50%;
+                transform:translateX(-50%);
+                background:#222;
+                color:#fff;
+                padding:12px 24px;
+                border-radius:24px;
+                font-size:.9rem;
+                display:flex;
+                align-items:center;
+                gap:10px;
+                box-shadow:0 4px 18px rgba(0,0,0,.18);
+                z-index:9999;
+                opacity:0;
+                transition:opacity .3s;
+                white-space:nowrap;
             `;
+
             document.body.appendChild(toast);
         }
+
+        // Show message
         toast.innerHTML = "✅ <strong>" + itemName + "</strong> added to cart";
         toast.style.opacity = "1";
+
+        // Hide after 2.5 seconds
         clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => { toast.style.opacity = "0"; }, 2500);
+        toast._timer = setTimeout(() => {
+            toast.style.opacity = "0";
+        }, 2500);
     }
 </script>
 
