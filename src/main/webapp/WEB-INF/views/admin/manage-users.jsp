@@ -107,12 +107,11 @@
                 <tbody id="userTableBody">
 
                 <c:forEach var="user" items="${users}">
-                    <!-- Added data attributes for filter and sort -->
                     <tr class="user-row"
                         data-role="${user.role.toUpperCase()}"
                         data-status="ACTIVE"
                         data-name="${user.fullName.toLowerCase()}"
-                        data-date="${user.id}"> <!-- Using ID as a proxy for 'newest' if joinedDate is missing -->
+                        data-date="${user.id}">
 
                         <td>
                             <div class="user-avatar-cell">
@@ -136,12 +135,12 @@
                         </td>
 
                         <td style="font-weight:600">0</td>
-
                         <td style="font-weight:600;color:var(--orange)">
                             NPR 0
                         </td>
-
-                        <td style="font-size:.8rem;color:var(--text-muted)">-</td>
+                        <td style="font-size:.8rem;color:var(--text-muted)">
+                                ${user.createdAt}
+                        </td>
 
                         <td>
                             <span class="badge badge-success">Active</span>
@@ -149,8 +148,13 @@
 
                         <td>
                             <div class="tbl-actions">
-                                <button class="tbl-btn">✏️</button>
-                                <button class="tbl-btn danger">🗑️</button>
+                                <form method="post" action="${ctx}/manageUser"
+                                      style="display:inline;"
+                                      onsubmit="return confirm('Delete this user?')">
+                                    <input type="hidden" name="action" value="delete"/>
+                                    <input type="hidden" name="id" value="${user.id}"/>
+                                    <button class="tbl-btn danger" style="color:red;">Remove</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -162,7 +166,7 @@
     </div>
 </div>
 
-<!-- MODALS (SAME AS BEFORE) -->
+
 <div class="modal-overlay hidden" id="viewUserModal">
     <div class="modal">
         <div class="modal-header">

@@ -94,6 +94,7 @@ public class UserDAO {
                 user.setFullName(rs.getString("full_name"));
                 user.setEmail(rs.getString("email"));
                 user.setRole(rs.getString("role"));
+                user.setCreatedAt(rs.getTimestamp("created_at"));
                 users.add(user);
             }
         } catch (Exception e) {
@@ -103,8 +104,8 @@ public class UserDAO {
     }
 
     // =========================
-   // TOTAL USERS
-   // =========================
+    // TOTAL USERS
+    // =========================
     public int getTotalUsers() {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM users";
@@ -179,7 +180,7 @@ public class UserDAO {
         return user;
     }
 
-     // =========================
+    // =========================
     // UPDATE USER PROFILE
     // =========================
     public boolean updateUser(int id, String fullName, String email,String address) {
@@ -249,5 +250,28 @@ public class UserDAO {
 
         return updated;
     }
+
+    // =========================
+// DELETE PASSWORD
+// =========================
+    public boolean deleteUser(int id) {
+
+        boolean result = false;
+
+        String sql = "DELETE FROM users WHERE id=?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            result = ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 
 }

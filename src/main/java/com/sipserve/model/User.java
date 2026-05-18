@@ -1,5 +1,7 @@
 package com.sipserve.model;
 
+import java.sql.Timestamp;
+
 public class User {
 
     private int id;
@@ -7,10 +9,10 @@ public class User {
     private String email;
     private String role;
     private String address;
-
     public int getId() {
         return id;
     }
+    private Timestamp createdAt;
 
     public void setId(int id) {
         this.id = id;
@@ -45,4 +47,10 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Timestamp getCreatedAt() {return createdAt;}
+
+    public void setCreatedAt(Timestamp createdAt) {this.createdAt = createdAt;}
+
 }
+
