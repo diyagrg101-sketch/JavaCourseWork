@@ -91,7 +91,7 @@ public class FeedbackServlet extends HttpServlet {
                 session.setAttribute("csrfToken", UUID.randomUUID().toString());
                 // PRG — flash message survives the redirect
                 session.setAttribute("flashSuccess",
-                        userName +"Thank you for your review! ");
+                        userName +", Thank you for your review! ");
                 resp.sendRedirect(req.getContextPath() + "/feedback");
             } else {
                 req.setAttribute("errorMsg", "Something went wrong. Please try again.");
