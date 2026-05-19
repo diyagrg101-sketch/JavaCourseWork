@@ -2,7 +2,6 @@ package com.sipserve.controller.customer;
 
 import com.sipserve.dao.FeedbackDAO;
 import com.sipserve.model.Feedback;
-import com.sipserve.model.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,120 +13,129 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * GET  /feedback        → show feedback form (loads product dropdown + stats)
+ * POST /feedback/submit → validate, save to DB, redirect (PRG)
+ */
 @WebServlet(urlPatterns = {"/feedback", "/feedback/submit"})
 public class FeedbackServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(FeedbackServlet.class.getName());
     private final FeedbackDAO dao = new FeedbackDAO();
 
-    // ───────────────────────── GET ─────────────────────────
+    // ── GET ───────────────────────────────────────────────────────────────────
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         loadPage(req, resp);
     }
 
-    // ───────────────────────── POST ────────────────────────
+    // ── POST ──────────────────────────────────────────────────────────────────
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
 
+        // ── 1. Auth guard ──────────────────────────────────────────────────
         HttpSession session = req.getSession(false);
-
-        // ✔ LOGIN CHECK
         if (session == null || session.getAttribute("user") == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        User user = (User) session.getAttribute("user");
-
-        // ✔ CSRF CHECK
+        // ── 2. CSRF validation ─────────────────────────────────────────────
         String sessionToken = (String) session.getAttribute("csrfToken");
-        String formToken = req.getParameter("csrfToken");
-
+        String formToken    = req.getParameter("csrfToken");
         if (sessionToken == null || !sessionToken.equals(formToken)) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid CSRF token");
             return;
         }
 
-        // ── INPUTS ─────────────────────────────
-        String ratingStr = req.getParameter("rating");
-        String review = req.getParameter("review"); // FIXED NAME
+        // ── 3. Parse inputs ────────────────────────────────────────────────
+        String ratingStr    = req.getParameter("rating");
         String productIdStr = req.getParameter("productId");
+        String review       = req.getParameter("message");  // textarea name="message"
 
-        int rating = 0;
+        int rating    = 0;
         int productId = 0;
+        try { rating    = Integer.parseInt(ratingStr);    } catch (NumberFormatException ignored) {}
+        try { productId = Integer.parseInt(productIdStr); } catch (NumberFormatException ignored) {}
 
-        try {
-            rating = Integer.parseInt(ratingStr);
-            productId = Integer.parseInt(productIdStr);
-        } catch (NumberFormatException e) {
-            req.setAttribute("errorMsg", "Invalid input data.");
-            loadPage(req, resp);
-            return;
-        }
-
-        // ── VALIDATION ─────────────────────────
+        // ── 4. Validation ──────────────────────────────────────────────────
         if (rating < 1 || rating > 5) {
-            req.setAttribute("errorMsg", "Please select rating 1–5 stars.");
+            req.setAttribute("errorMsg", "Please select a valid star rating (1–5).");
             loadPage(req, resp);
             return;
         }
-
+        if (productId <= 0) {
+            req.setAttribute("errorMsg", "Please select a product to review.");
+            loadPage(req, resp);
+            return;
+        }
         if (review == null || review.trim().length() < 5) {
             req.setAttribute("errorMsg", "Review must be at least 5 characters.");
             loadPage(req, resp);
             return;
         }
-
-        if (review.length() > 500) {
-            review = review.substring(0, 500);
+        if (review.length() > 1000) {
+            review = review.substring(0, 1000);
         }
 
-        // ── SAVE FEEDBACK ──────────────────────
-        try {
-            Feedback fb = new Feedback();
-            fb.setUserId(user.getId());
-            fb.setProductId(productId);
-            fb.setRating(rating);
-            fb.setReview(review.trim()); // FIXED
+        // ── 5. Resolve user_id from session email ──────────────────────────
+        //      LoginServlet stores: session.setAttribute("email", email)
+        String email  = session.getAttribute("email") != null
+                ? session.getAttribute("email").toString() : "";
+        String userName = session.getAttribute("user").toString();
 
+        int userId = dao.getUserIdByEmail(email);
+        if (userId <= 0) {
+            req.setAttribute("errorMsg", "Could not identify your account. Please log in again.");
+            loadPage(req, resp);
+            return;
+        }
+
+        // ── 6. Persist ─────────────────────────────────────────────────────
+        try {
+            Feedback fb = new Feedback(userId, productId, rating, review.trim());
             int newId = dao.insert(fb);
 
             if (newId > 0) {
-
+                // Rotate CSRF token after successful submit
                 session.setAttribute("csrfToken", UUID.randomUUID().toString());
-                session.setAttribute("flashSuccess", "Thank you for your review!");
-
+                session.setAttribute("flashSuccess",
+                        "Thank you for your review, " + userName + "! ☕");
                 resp.sendRedirect(req.getContextPath() + "/feedback");
             } else {
-                req.setAttribute("errorMsg", "Failed to submit feedback.");
+                req.setAttribute("errorMsg", "Something went wrong. Please try again.");
                 loadPage(req, resp);
             }
 
-        } catch (Exception ex) {
-            log.log(Level.SEVERE, "Error saving feedback", ex);
-            req.setAttribute("errorMsg", "Server error occurred.");
+        } catch (RuntimeException ex) {
+            // Duplicate review for same user + product
+            if ("DUPLICATE".equals(ex.getMessage())) {
+                req.setAttribute("errorMsg",
+                        "You have already reviewed this product. Thank you!");
+            } else {
+                log.log(Level.SEVERE, "Failed to save feedback", ex);
+                req.setAttribute("errorMsg", "A server error occurred. Please try again later.");
+            }
             loadPage(req, resp);
         }
     }
 
-    // ───────────────────────── PAGE LOADER ─────────────────────────
+    // ── Page loader ───────────────────────────────────────────────────────────
     private void loadPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        // CSRF token
         HttpSession session = req.getSession(true);
-
-        // CSRF
         if (session.getAttribute("csrfToken") == null) {
             session.setAttribute("csrfToken", UUID.randomUUID().toString());
         }
         req.setAttribute("csrfToken", session.getAttribute("csrfToken"));
 
-        // Flash
+        // Flash message from redirect
         String flash = (String) session.getAttribute("flashSuccess");
         if (flash != null) {
             req.setAttribute("successMsg", flash);
@@ -137,25 +145,29 @@ public class FeedbackServlet extends HttpServlet {
         // Stats
         try {
             double[] stats = dao.getStats();
-            int total = (int) stats[0];
-            double avg = stats[1];
-
-            req.setAttribute("avgRating",
-                    avg > 0 ? String.format("%.1f", avg) : null);
-
-            req.setAttribute("totalReviews",
-                    total > 0 ? total : 0);
-
-        } catch (Exception ex) {
-            log.log(Level.WARNING, "Stats load failed", ex);
+            int    total = (int) stats[0];
+            double avg   = stats[1];
+            req.setAttribute("avgRating",    avg   > 0 ? String.format("%.1f", avg) : null);
+            req.setAttribute("totalReviews", total > 0 ? total : null);
+        } catch (RuntimeException ex) {
+            log.log(Level.WARNING, "Could not load stats", ex);
         }
 
-        // Recent feedback
+        // Product dropdown list
+        try {
+            List<Object[]> products = dao.getAllProducts();
+            req.setAttribute("products", products);
+        } catch (RuntimeException ex) {
+            log.log(Level.WARNING, "Could not load products", ex);
+            req.setAttribute("products", java.util.Collections.emptyList());
+        }
+
+        // Community feed — 10 most recent
         try {
             List<Feedback> feedbacks = dao.getRecent(10);
             req.setAttribute("feedbacks", feedbacks);
-        } catch (Exception ex) {
-            log.log(Level.WARNING, "Feedback load failed", ex);
+        } catch (RuntimeException ex) {
+            log.log(Level.WARNING, "Could not load feed", ex);
             req.setAttribute("feedbacks", java.util.Collections.emptyList());
         }
 
