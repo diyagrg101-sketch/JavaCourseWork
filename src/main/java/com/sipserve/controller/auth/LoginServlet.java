@@ -62,7 +62,6 @@ public class LoginServlet extends HttpServlet {
         String role = dao.validateLogin(email, password, loginType);
 
         if (role != null) {
-
             // Create session
             HttpSession session = request.getSession();
 
@@ -79,17 +78,15 @@ public class LoginServlet extends HttpServlet {
 
             // Redirect based on role
             if ("ADMIN".equalsIgnoreCase(role)) {
+                // This will trigger your AdminFilter if it's mapped to /adminDashboard
                 response.sendRedirect(request.getContextPath() + "/adminDashboard");
             } else {
                 response.sendRedirect(request.getContextPath() + "/profile");
             }
 
-        }
-
-        else {
-            //Shows error message on login failure
+        } else {
+            // Login Failure Logic: Forward back to login with error
             request.setAttribute("error", "Invalid email or password");
-
             request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
                     .forward(request, response);
         }

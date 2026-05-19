@@ -6,7 +6,16 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.*;
 
-@WebFilter("/admin/*")
+@WebFilter(urlPatterns = {
+        "/adminDashboard",
+        "/manageProduct",
+        "/manageUser",
+        "/manageOrder",
+        "/manageCategories",
+        "/report",
+        "/admin/*" // This protects any direct JSP access inside the admin folder
+})
+
 public class AdminFilter implements Filter {
 
     @Override
