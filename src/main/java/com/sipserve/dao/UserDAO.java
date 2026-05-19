@@ -26,7 +26,7 @@ public class UserDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, fullname);
             ps.setString(2, email);
-            ps.setString(3, hashedPassword); // Plain text ko satta hash halne
+            ps.setString(3, hashedPassword);
             ps.setString(4, "CUSTOMER");
 
             result = ps.executeUpdate() > 0;
@@ -37,11 +37,11 @@ public class UserDAO {
     }
 
     // =========================
-    // LOGIN USER (NEW)
+    // LOGIN USER
     // =========================
     public String validateLogin(String email, String password, String loginType) {
         String role = null;
-        // Password lai SQL query bata hatayera, DB bata hashed password matra tanne
+        //Fetch stored hashed password and role from database
         String sql = "SELECT role, password FROM users WHERE email=?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -52,11 +52,11 @@ public class UserDAO {
             if (rs.next()) {
                 String dbHashedPassword = rs.getString("password");
 
-                // Tapaiko PasswordUtil use garera check garne
+                // Compare entered password with hashed password
                 if (PasswordUtil.checkPassword(password, dbHashedPassword)) {
                     role = rs.getString("role");
 
-                    // Admin/Customer logic validation
+                    // Role based logic validation
                     if (loginType.equals("admin") && !role.equalsIgnoreCase("admin")) return null;
                     if (!loginType.equals("admin") && role.equalsIgnoreCase("admin")) return null;
 
@@ -88,6 +88,10 @@ public class UserDAO {
         return fullname;
     }
 
+    // =========================
+    // GET ALL USERS
+    // =========================
+    // Fetches all users from database and returns as list
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -112,6 +116,7 @@ public class UserDAO {
     // =========================
     // TOTAL USERS
     // =========================
+    // Returns total number of users in system
     public int getTotalUsers() {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM users";
@@ -131,6 +136,7 @@ public class UserDAO {
     // =========================
     // TOTAL CUSTOMERS
     // =========================
+    // Returns number of users with role CUSTOMER
     public int getTotalCustomers() {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM users WHERE role='CUSTOMER'";
@@ -146,10 +152,10 @@ public class UserDAO {
         return count;
     }
 
-
     // =========================
-// TOTAL ADMINS
-// =========================
+    // TOTAL ADMINS COUNT
+    // =========================
+    // Returns number of admin users
     public int getTotalAdmins() {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM users WHERE role='ADMIN'";
@@ -165,6 +171,10 @@ public class UserDAO {
         return count;
     }
 
+    // =========================
+    // GET USER BY EMAIL
+    // =========================
+    // Returns full user object using email
     public User getUserByEmail(String email) {
         User user = null;
         String sql = "SELECT * FROM users WHERE email=?";
@@ -189,6 +199,7 @@ public class UserDAO {
     // =========================
     // UPDATE USER PROFILE
     // =========================
+    // Updates user information like name, email, address
     public boolean updateUser(int id, String fullName, String email,String address) {
         boolean result = false;
         String sql = "UPDATE users SET full_name=?, email=?, address=? WHERE id=?";
@@ -204,9 +215,11 @@ public class UserDAO {
         }
         return result;
     }
+
     // =========================
-// CHECK CURRENT PASSWORD
-// =========================
+    // CHECK CURRENT PASSWORD
+    // =========================
+    // Checks if entered current password matches database password
     public boolean checkCurrentPassword(String email, String currentPassword) {
 
         boolean match = false;
@@ -234,8 +247,9 @@ public class UserDAO {
 
 
     // =========================
-// UPDATE PASSWORD
-// =========================
+    // UPDATE PASSWORD
+    // =========================
+    // Updates user password in database
     public boolean updatePassword(String email, String newPassword) {
 
         boolean updated = false;
@@ -258,8 +272,9 @@ public class UserDAO {
     }
 
     // =========================
-// DELETE PASSWORD
-// =========================
+    // DELETE USER
+    // =========================
+    // Removes user from database using ID
     public boolean deleteUser(int id) {
 
         boolean result = false;

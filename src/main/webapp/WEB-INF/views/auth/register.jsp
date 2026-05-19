@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@
 <div class="auth-page">
     <div class="auth-card">
 
-        <!-- FORM START -->
+        <!-- Form Start -->
         <form action="${pageContext.request.contextPath}/register" method="post">
 
             <div class="auth-logo">
@@ -27,11 +28,19 @@
             </div>
 
             <h2>Create an account</h2>
+
             <p class="auth-subtitle">
                 Join our community and enjoy a smarter cafe experience.
             </p>
 
-            <!-- Profile section (UI only) -->
+            <!-- Error Message -->
+            <c:if test="${not empty errorMessage}">
+                <div style="color:red; margin-bottom:10px; font-weight:500;">
+                        ${errorMessage}
+                </div>
+            </c:if>
+
+            <!-- Profile section -->
             <div class="profile-pic-area">
                 <div class="profile-pic-circle">
                     <div class="circle"></div>
@@ -91,7 +100,7 @@
         </form>
         <!-- FORM END -->
 
-        <!-- Login link (outside form) -->
+        <!-- Login link -->
         <div class="auth-link">
             Already have an account?
             <a href="${pageContext.request.contextPath}/login">Login</a>

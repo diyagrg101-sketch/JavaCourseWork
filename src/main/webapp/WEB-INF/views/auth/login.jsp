@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,19 +26,20 @@
         <h2 style="margin-top:8px;">Welcome back!</h2>
         <p class="auth-subtitle">The aroma of fresh coffee is waiting for you.</p>
 
-        <!-- ERROR MESSAGE -->
-        <% if (request.getAttribute("error") != null) { %>
-        <div style="color:red; margin:10px 0; font-weight:500;">
-            <%= request.getAttribute("error") %>
-        </div>
-        <% } %>
+        <!-- ERROR MESSAGE (FIXED for LoginServlet) -->
+        <c:if test="${not empty error}">
+            <div style="color:red; margin:10px 0; font-weight:500;">
+                    ${error}
+            </div>
+        </c:if>
 
+        <!-- Login Type Tab-->
         <div class="login-tabs">
             <button type="button" class="login-tab active" onclick="setTab(this, 'member')">👤 Member</button>
             <button type="button" class="login-tab" onclick="setTab(this, 'admin')">🛡️ Admin</button>
         </div>
 
-        <!-- LOGIN FORM -->
+        <!-- Login Form -->
         <form action="${pageContext.request.contextPath}/login" method="post">
 
             <input type="hidden" name="loginType" id="loginType" value="member">
@@ -52,15 +55,11 @@
             </div>
 
             <div style="text-align:right; margin-top:6px;">
-            <a href="${pageContext.request.contextPath}/forgetPassword"
-               class="cp-forgot-link"
-               style="
-            font-size:.62rem;
-            color:#8b5e3c;
-            text-decoration:none;
-            font-weight:500;
-            transition:.2s;">
-                Forgot your password?</a>
+                <a href="${pageContext.request.contextPath}/forgetPassword"
+                   class="cp-forgot-link"
+                   style="font-size:.62rem; color:#8b5e3c; text-decoration:none; font-weight:500;">
+                    Forgot your password?
+                </a>
             </div>
 
             <button type="submit" class="btn-full solid">
@@ -69,6 +68,7 @@
 
         </form>
 
+        <!-- Social Login -->
         <div class="divider">OR CONTINUE WITH</div>
 
         <div class="social-row">
@@ -78,6 +78,7 @@
 
         <div class="divider">──────────────────────────────────────</div>
 
+        <!-- Register Link -->
         <div class="auth-link">
             Don't have an account yet?
             <a href="${pageContext.request.contextPath}/register">Create an account</a>

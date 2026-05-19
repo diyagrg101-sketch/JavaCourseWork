@@ -2,13 +2,13 @@ package com.sipserve.controller.auth;
 
 import java.io.IOException;
 
-import com.sipserve.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import jakarta.servlet.RequestDispatcher;
 
 import com.sipserve.dao.UserDAO;
+import com.sipserve.util.ValidationUtil;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -17,43 +17,81 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Forward request to login.jsp page
         RequestDispatcher rd =
                 request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp");
 
         rd.forward(request, response);
     }
 
+    // Handles login form submission
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //Gets from data from login page
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String loginType = request.getParameter("loginType");
 
+        //Checks if email or password is empty
+        if (ValidationUtil.isEmpty(email) ||
+                ValidationUtil.isEmpty(password)) {
 
+            request.setAttribute("error", "Email and password are required");
+
+            request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                    .forward(request, response);
+            return;
+        }
+
+        // Check email format
+        if (!ValidationUtil.isValidEmail(email)) {
+
+            request.setAttribute("error", "Invalid email format");
+
+            request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                    .forward(request, response);
+            return;
+        }
+
+        //Creates DAO object for database
         UserDAO dao = new UserDAO();
+
+        // Validate login credentials
         String role = dao.validateLogin(email, password, loginType);
+
         if (role != null) {
+
+            // Create session
             HttpSession session = request.getSession();
+
+            // Get full name from DB
             String fullname = dao.getUserNameByEmail(email);
 
-            // STORE IN SESSION
+            // Store session data
             session.setAttribute("user", fullname);
             session.setAttribute("email", email);
             session.setAttribute("role", role);
-            session.setMaxInactiveInterval(60 * 60 * 24); // 1 day
 
+            // Session valid for 1 day
+            session.setMaxInactiveInterval(60 * 60 * 24);
 
-            if ("ADMIN".equalsIgnoreCase(role)) {response.sendRedirect(request.getContextPath() + "/adminDashboard");
+            // Redirect based on role
+            if ("ADMIN".equalsIgnoreCase(role)) {
+                response.sendRedirect(request.getContextPath() + "/adminDashboard");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/profile");
             }
-            else {response.sendRedirect(request.getContextPath() + "/profile");
-            }
-        } else {request.setAttribute("error", "Invalid email or password"
-            );
-            request.getRequestDispatcher(
-                    "/WEB-INF/views/auth/login.jsp"
-            ).forward(request, response);
+
+        }
+
+        else {
+            //Shows error message on login failure
+            request.setAttribute("error", "Invalid email or password");
+
+            request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp")
+                    .forward(request, response);
         }
     }
 }

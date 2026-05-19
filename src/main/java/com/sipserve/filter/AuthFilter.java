@@ -13,22 +13,27 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
+        //Convert request/response to HTTP object
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
+        //Gets requested URL
         String uri = req.getRequestURI();
         String contextPath = req.getContextPath();
 
+        //Gets existing session does not create new one
         HttpSession session = req.getSession(false);
 
+        //Checks if user is logged in
         boolean loggedIn = (session != null && session.getAttribute("user") != null);
 
+        //Redirect root URL to home page
         if (uri.equals(contextPath) || uri.equals(contextPath + "/")) {
             res.sendRedirect(contextPath + "/home");
             return;
         }
 
-
+        //Check if requested page is public
         boolean publicPage =
                 uri.contains("/login") ||
                         uri.contains("/register") ||
@@ -46,28 +51,28 @@ public class AuthFilter implements Filter {
                         uri.endsWith(".jpeg") ||
                         uri.endsWith(".svg");
 
-        if (publicPage) {
+        if (publicPage) { //Allows access to public pages without authentication
             chain.doFilter(request, response);
             return;
         }
 
 
-        if (!loggedIn) {
+        if (!loggedIn) { //Redirect to login if user is not logged in
             res.sendRedirect(contextPath + "/login");
             return;
         }
 
-
+        //Get user role from session
         String role = (session != null) ? (String) session.getAttribute("role") : null;
 
-
+        //Restrict admin pages to only ADMIN role
         if (uri.contains("/admin")) {
             if (!"ADMIN".equalsIgnoreCase(role)) {
                 res.sendRedirect(contextPath + "/home");
                 return;
             }
         }
-
+        //Allows request to continue if all checks pass
         chain.doFilter(request, response);
     }
 }
