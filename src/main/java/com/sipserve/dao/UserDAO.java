@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sipserve.model.User;
+import com.sipserve.util.PasswordUtil;
 
 public class UserDAO {
 
@@ -18,16 +19,18 @@ public class UserDAO {
     public boolean registerUser(String fullname, String email, String password) {
         boolean result = false;
 
-        String sql = "INSERT INTO users(full_name, email, password,role) VALUES (?, ?, ?,?)";
+        String hashedPassword = PasswordUtil.hashPassword(password);
+
+        String sql = "INSERT INTO users(full_name, email, password, role) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, fullname);
             ps.setString(2, email);
-            ps.setString(3, password);
+            ps.setString(3, hashedPassword); // Plain text ko satta hash halne
             ps.setString(4, "CUSTOMER");
 
             result = ps.executeUpdate() > 0;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -38,29 +41,32 @@ public class UserDAO {
     // =========================
     public String validateLogin(String email, String password, String loginType) {
         String role = null;
-        String sql = "SELECT role FROM users WHERE email=? AND password=?";
+        // Password lai SQL query bata hatayera, DB bata hashed password matra tanne
+        String sql = "SELECT role, password FROM users WHERE email=?";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                role = rs.getString("role");
-                if(loginType.equals("admin")) {
-                    if(!role.equalsIgnoreCase("admin")) {
-                        return null;
-                    }
-                }
-                else {
-                    if(role.equalsIgnoreCase("admin")) {
-                        return null;
-                    }
+                String dbHashedPassword = rs.getString("password");
+
+                // Tapaiko PasswordUtil use garera check garne
+                if (PasswordUtil.checkPassword(password, dbHashedPassword)) {
+                    role = rs.getString("role");
+
+                    // Admin/Customer logic validation
+                    if (loginType.equals("admin") && !role.equalsIgnoreCase("admin")) return null;
+                    if (!loginType.equals("admin") && role.equalsIgnoreCase("admin")) return null;
+
+                    return role;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return role;
+        return null;
     }
 
     // =========================
