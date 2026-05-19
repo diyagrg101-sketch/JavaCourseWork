@@ -6,132 +6,162 @@ import com.sipserve.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FeedbackDAO {
 
-    private static final Logger log = Logger.getLogger(FeedbackDAO.class.getName());
-
-    // ── Insert ────────────────────────────────────────────────────────────────
-
+    // ─────────────────────────────────────────────
+    // INSERT
+    // ─────────────────────────────────────────────
     public int insert(Feedback fb) {
-        // Columns now match the schema (user_name, user_email, rating, message)
-        String sql = "INSERT INTO feedback (user_name, user_email, rating, message) " +
+
+        String sql = "INSERT INTO feedback (user_id, product_id, rating, review) " +
                 "VALUES (?, ?, ?, ?)";
+
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, sanitize(fb.getUserName()));
-            ps.setString(2, sanitize(fb.getUserEmail()));
-            ps.setInt   (3, fb.getRating());
-            ps.setString(4, sanitize(fb.getMessage()));
+            ps.setInt(1, fb.getUserId());
+            ps.setInt(2, fb.getProductId());
+            ps.setInt(3, fb.getRating());
+            ps.setString(4, fb.getReview());
+
             ps.executeUpdate();
 
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) return rs.getInt(1);
             }
-        } catch (SQLException e) {
-            log.log(Level.SEVERE, "insert() failed", e);
-            throw new RuntimeException("Could not save feedback", e);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Insert feedback failed", e);
         }
+
         return -1;
     }
 
-    // ── Read: community feed ──────────────────────────────────────────────────
-
+    // ─────────────────────────────────────────────
+    // RECENT FEEDBACK (for customer page)
+    // ─────────────────────────────────────────────
     public List<Feedback> getRecent(int limit) {
-        String sql = "SELECT * FROM feedback ORDER BY created_at DESC LIMIT ?";
+
+        String sql =
+                "SELECT f.id, f.rating, f.review, f.created_at, " +
+                        "u.full_name, u.email " +
+                        "FROM feedback f " +
+                        "JOIN users u ON f.user_id = u.id " +
+                        "ORDER BY f.created_at DESC LIMIT ?";
+
         List<Feedback> list = new ArrayList<>();
+
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, limit);
+
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) list.add(map(rs));
+
+                while (rs.next()) {
+                    Feedback fb = new Feedback();
+
+                    fb.setId(rs.getInt("id"));
+                    fb.setRating(rs.getInt("rating"));
+                    fb.setReview(rs.getString("review"));
+                    fb.setCreatedAt(rs.getTimestamp("created_at"));
+
+                    fb.setFullName(rs.getString("full_name"));
+                    fb.setEmail(rs.getString("email"));
+
+                    list.add(fb);
+                }
             }
-        } catch (SQLException e) {
-            log.log(Level.SEVERE, "getRecent() failed", e);
-            throw new RuntimeException("Could not load recent feedback", e);
+
+        } catch (Exception e) {
+            throw new RuntimeException("getRecent failed", e);
         }
+
         return list;
     }
 
-    // ── Read: admin report ────────────────────────────────────────────────────
-
+    // ─────────────────────────────────────────────
+    // ADMIN: GET ALL FEEDBACK (FIXED - THIS WAS MISSING)
+    // ─────────────────────────────────────────────
     public List<Feedback> getAll() {
-        String sql = "SELECT * FROM feedback ORDER BY created_at DESC";
+
+        String sql =
+                "SELECT f.id, f.rating, f.review, f.created_at, " +
+                        "u.full_name, u.email " +
+                        "FROM feedback f " +
+                        "JOIN users u ON f.user_id = u.id " +
+                        "ORDER BY f.created_at DESC";
+
         List<Feedback> list = new ArrayList<>();
+
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) list.add(map(rs));
-        } catch (SQLException e) {
-            log.log(Level.SEVERE, "getAll() failed", e);
-            throw new RuntimeException("Could not load all feedback", e);
+            while (rs.next()) {
+                Feedback fb = new Feedback();
+
+                fb.setId(rs.getInt("id"));
+                fb.setRating(rs.getInt("rating"));
+                fb.setReview(rs.getString("review"));
+                fb.setCreatedAt(rs.getTimestamp("created_at"));
+
+                fb.setFullName(rs.getString("full_name"));
+                fb.setEmail(rs.getString("email"));
+
+                list.add(fb);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("getAll failed", e);
         }
+
         return list;
     }
 
-    // ── Combined stats — single round-trip (replaces getTotalCount + getAverageRating) ──
-
-    /**
-     * Returns [totalCount, averageRating] in one DB round-trip.
-     * averageRating is rounded to 1 decimal; 0.0 when there are no rows.
-     */
+    // ─────────────────────────────────────────────
+    // STATS
+    // ─────────────────────────────────────────────
     public double[] getStats() {
-        String sql = "SELECT COUNT(*) AS total, COALESCE(AVG(rating), 0) AS avg_rating " +
-                "FROM feedback";
+
+        String sql =
+                "SELECT COUNT(*) AS total, COALESCE(AVG(rating),0) AS avg_rating " +
+                        "FROM feedback";
+
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
-                int    total  = rs.getInt("total");
-                double avg    = Math.round(rs.getDouble("avg_rating") * 10.0) / 10.0;
-                return new double[]{total, avg};
+                return new double[]{
+                        rs.getInt("total"),
+                        Math.round(rs.getDouble("avg_rating") * 10.0) / 10.0
+                };
             }
-        } catch (SQLException e) {
-            log.log(Level.SEVERE, "getStats() failed", e);
-            throw new RuntimeException("Could not load feedback stats", e);
+
+        } catch (Exception e) {
+            throw new RuntimeException("getStats failed", e);
         }
+
         return new double[]{0, 0.0};
     }
 
-    // ── Delete ────────────────────────────────────────────────────────────────
-
+    // ─────────────────────────────────────────────
+    // DELETE
+    // ─────────────────────────────────────────────
     public boolean deleteById(int id) {
+
         String sql = "DELETE FROM feedback WHERE id = ?";
+
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
-            log.log(Level.SEVERE, "deleteById() failed for id=" + id, e);
-            throw new RuntimeException("Could not delete feedback", e);
+
+        } catch (Exception e) {
+            throw new RuntimeException("delete failed", e);
         }
-    }
-
-    // ── Helpers ───────────────────────────────────────────────────────────────
-
-    private Feedback map(ResultSet rs) throws SQLException {
-        Feedback fb = new Feedback();
-        fb.setId       (rs.getInt      ("id"));
-        fb.setUserName (rs.getString   ("user_name"));
-        fb.setUserEmail(rs.getString   ("user_email"));
-        fb.setRating   (rs.getInt      ("rating"));
-        fb.setMessage  (rs.getString   ("message"));
-        fb.setCreatedAt(rs.getTimestamp("created_at"));
-        return fb;
-    }
-
-    /**
-     * Strip HTML tags at write time as a defence-in-depth measure.
-     * Primary XSS protection is fn:escapeXml() in the JSP at render time.
-     */
-    private String sanitize(String s) {
-        return (s == null) ? "" : s.replaceAll("<[^>]*>", "").trim();
     }
 }
