@@ -31,6 +31,8 @@ public class AuthFilter implements Filter {
 
         boolean publicPage =
                 uri.contains("/login") ||
+                        uri.contains("/register") ||
+                        uri.contains("/forgetPassword") ||
                         uri.contains("/home") ||
                         uri.contains("/menu") ||
                         uri.contains("/about") ||
@@ -43,7 +45,6 @@ public class AuthFilter implements Filter {
                         uri.endsWith(".jpg") ||
                         uri.endsWith(".jpeg") ||
                         uri.endsWith(".svg");
-
 
         if (publicPage) {
             chain.doFilter(request, response);

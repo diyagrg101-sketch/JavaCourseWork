@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", fullname);
             session.setAttribute("email", email);
             session.setAttribute("role", role);
+            session.setMaxInactiveInterval(60 * 60 * 24); // 1 day
 
 
             if ("ADMIN".equalsIgnoreCase(role)) {response.sendRedirect(request.getContextPath() + "/adminDashboard");

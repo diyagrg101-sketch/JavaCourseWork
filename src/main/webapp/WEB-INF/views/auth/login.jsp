@@ -33,7 +33,7 @@
 
         <div class="login-tabs">
             <button type="button" class="login-tab active" onclick="setTab(this, 'member')">👤 Member</button>
-            <button type="button" class="login-tab" onclick="setTab(this, 'admin')">🛡️ Admin Portal</button>
+            <button type="button" class="login-tab" onclick="setTab(this, 'admin')">🛡️ Admin</button>
         </div>
 
         <!-- LOGIN FORM -->
