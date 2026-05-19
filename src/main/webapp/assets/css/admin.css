@@ -1340,3 +1340,55 @@ body{
         display:none;
     }
 }
+/*============================================================
+Feedback Review
+============================================================== */
+.review-card{
+    margin-bottom:18px;
+}
+
+.review-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.review-btn{
+    font-size:.75rem;
+    padding:6px 12px;
+}
+
+.review-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.last-review{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.review-name{
+    font-size:.86rem;
+    font-weight:700;
+}
+
+.review-stars{
+    color:#FFB400;
+    font-size:.85rem;
+    margin:4px 0;
+}
+
+.review-text{
+    font-size:.8rem;
+    color:var(--text-mid);
+}
+
+.review-time{
+    font-size:.72rem;
+    color:var(--text-muted);
+}

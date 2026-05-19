@@ -128,3 +128,12 @@ INSERT INTO products (name, description, price, rating, image_url, category_id, 
     ('Peri Peri Fries',    'Crispy fries tossed in spicy peri-peri seasoning.',        180.00, 4.3, 'Peri-Peri-Fries.png',      3, 0),
     ('Chicken Puff Pastry','Flaky puff pastry filled with seasoned minced chicken.',   120.00, 4.2, 'chicken-puff.jpg',         3, 0),
     ('Paneer Tikka Wrap',  'Smoky, spiced paneer in a wrap.',                          300.00, 4.4, 'paneer tikka.jpg',         3, 0);
+
+CREATE TABLE feedback (
+                          id         INT AUTO_INCREMENT PRIMARY KEY,
+                          user_name  VARCHAR(100) NOT NULL,
+                          user_email VARCHAR(150),
+                          rating     TINYINT      NOT NULL CHECK (rating BETWEEN 1 AND 5),
+                          message    VARCHAR(500) NOT NULL,
+                          created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
